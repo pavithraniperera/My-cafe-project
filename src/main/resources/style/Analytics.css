@@ -1,0 +1,8 @@
+.anchor-pane-with-background {
+    -fx-background-image: url("../image/background.png"); /* Reference to the image in the resources directory */
+    -fx-background-size: cover;
+    -fx-background-opacity: 0.2;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane2" prefHeight="1052.0" prefWidth="1788.0" stylesheets="@../style/Staff.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.StaffFormController">
+   <children>
+      <ImageView fitHeight="104.0" fitWidth="112.0" layoutX="1640.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Staff%20icon.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="138.0" layoutY="72.0" prefHeight="688.0" prefWidth="1502.0">
+         <children>
+            <TableView fx:id="tableEmployee" layoutX="76.0" layoutY="46.0" onMouseClicked="#tableOnMouseClicked" prefHeight="560.0" prefWidth="1453.0" styleClass="table-row-cell" stylesheets="@../style/Staff.css">
+              <columns>
+                <TableColumn fx:id="empIdCol" prefWidth="132.0" text="Employee id" />
+                <TableColumn fx:id="nameCol" prefWidth="168.0" text="Name" />
+                  <TableColumn fx:id="NicCol" prefWidth="182.0" text="NIC" />
+                  <TableColumn fx:id="addressCol" prefWidth="185.0" text="Address" />
+                  <TableColumn fx:id="emailCol" prefWidth="137.0" text="E-mail" />
+                  <TableColumn fx:id="chargeCol" prefWidth="145.0" text="Charge Per hour" />
+                  <TableColumn fx:id="qualificationCol" prefWidth="173.0" text="Qualification" />
+                  <TableColumn fx:id="jobroleCol" prefWidth="173.0" text="Job role" />
+                  <TableColumn fx:id="telephoneCol" prefWidth="155.0" text="Telephone" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="btnAddEmployee" layoutX="1269.0" layoutY="746.0" onAction="#btnAddEmployeeOnAction" prefHeight="72.0" prefWidth="318.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="button-with-gradient" text="Add Employee">
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-add-user-80.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

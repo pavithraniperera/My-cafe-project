@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1052.0" prefWidth="1788.0" stylesheets="@../style/StaffForm.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.StaffDetailFormController">
+    <children>
+        <Text fill="#ffc475" layoutX="517.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-with-border" text="EMPLOYER DETAILS" wrappingWidth="816.7294921875">
+            <font>
+                <Font name="DejaVuMathTeXGyre-Regular" size="54.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="431.0" fitWidth="649.0" layoutX="1111.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../image/Staff%20(1).png" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="79.0" layoutY="94.0" prefHeight="668.0" prefWidth="1187.0" styleClass="anchor-pane-with-border" stylesheets="@../style/StaffForm.css">
+            <children>
+                <TextField fx:id="txtEmpId" layoutX="50.0" layoutY="50.0" prefHeight="62.0" prefWidth="523.0" promptText="Employer Id" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css" AnchorPane.leftAnchor="41.0">
+                    <font>
+                        <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="txtName" layoutX="652.0" layoutY="42.0" prefHeight="62.0" prefWidth="511.0" promptText="Employer Name" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css" AnchorPane.leftAnchor="650.0">
+                    <font>
+                        <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="txtTelephone" layoutX="45.0" layoutY="180.0" prefHeight="62.0" prefWidth="523.0" promptText="Telephone" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css" AnchorPane.leftAnchor="43.0">
+                    <font>
+                        <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="txtAddress" layoutX="45.0" layoutY="318.0" prefHeight="62.0" prefWidth="523.0" promptText="Address" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css" AnchorPane.leftAnchor="43.0">
+                    <font>
+                        <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="txtEmail" layoutX="45.0" layoutY="439.0" prefHeight="62.0" prefWidth="523.0" promptText="E mail" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css" AnchorPane.leftAnchor="43.0">
+                    <font>
+                        <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+                    </font>
+                </TextField>
+            <TextField fx:id="txtQualification" layoutX="655.0" layoutY="356.0" prefHeight="114.0" prefWidth="498.0" promptText="Qualification" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+               <stylesheets>
+                  <URL value="@../style/CustomerDetail.css" />
+                  <URL value="@../style/StaffForm.css" />
+               </stylesheets>
+            </TextField>
+            <TextField fx:id="txtNic" layoutX="45.0" layoutY="573.0" prefHeight="62.0" prefWidth="523.0" promptText="NIC " style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css" AnchorPane.leftAnchor="43.0">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtCharge" layoutX="652.0" layoutY="140.0" prefHeight="62.0" prefWidth="511.0" promptText="Charge For Hour" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtJobroll" layoutX="652.0" layoutY="242.0" prefHeight="62.0" prefWidth="511.0" promptText="Job Roll" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/StaffForm.css">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            </children>
+        </AnchorPane>
+        <JFXButton fx:id="btnSave" layoutX="112.0" layoutY="815.0" onAction="#btnSaveOnAction" prefHeight="58.0" prefWidth="209.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/StaffForm.css" text="Save" AnchorPane.bottomAnchor="179.0">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/icons8-save-80.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Dyuthi Regular" size="23.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnUpdate" layoutX="392.0" layoutY="815.0" onAction="#btnUpdateOnAction" prefHeight="58.0" prefWidth="209.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/StaffForm.css" text="Update" AnchorPane.bottomAnchor="179.0">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/icons8-edit-80.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Dyuthi Regular" size="23.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnClear" layoutX="672.0" layoutY="906.0" onAction="#btnClearOnAction" prefHeight="58.0" prefWidth="217.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/StaffForm.css" text="Clear" AnchorPane.bottomAnchor="179.0">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/icons8-clear-50.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Dyuthi Regular" size="23.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnDelete" layoutX="921.0" layoutY="909.0" onAction="#btnDeleteOnAction" prefHeight="58.0" prefWidth="217.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/StaffForm.css" text="Delete" AnchorPane.bottomAnchor="179.0">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/icons8-delete-80.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="Dyuthi Regular" size="23.0" />
+            </font>
+        </JFXButton>
+    </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+.anchor-pane-with-background {
+    -fx-background-image: url("../image/background.png"); /* Reference to the image in the resources directory */
+    -fx-background-size: cover;
+    -fx-background-opacity: 0.2;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+
+}
+.date-picker {
+    -fx-control-inner-background: rgba(246, 234, 234, 1);
+}
+
+/* Set the border color for the DatePicker */
+.date-picker .text-field {
+    -fx-text-box-border: #D06A6A;
+}
+
+/* Set the focused border color for the DatePicker */
+.date-picker .text-field:focused {
+    -fx-focus-color: #D06A6A;
+}
+
+.text-field-with-color {
+    -fx-background-color: rgba(246, 234, 234, 1);
+    -fx-border-color: #DD9F9F; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-text-fill: black;
+}
+/* Set the background color for the ComboBox */
+.combo-box {
+    -fx-control-inner-background: rgba(246, 234, 234, 1);
+}
+
+/* Set the border color for the ComboBox */
+.combo-box .text-field {
+    -fx-text-box-border: #D06A6A;
+}
+
+/* Set the focused border color for the ComboBox */
+.combo-box .text-field:focused {
+    -fx-focus-color: #D06A6A;
+}
+.label {
+    -fx-background-color: rgba(255, 196, 118, 0.2346);
+}
+.button-with-gradient:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.9), rgba(255, 196, 118, 1), rgba(255, 196, 118, 0.9));
+}
+
+.table-view .column-header {
+    -fx-background-color: rgba(236, 211, 176, 0.82);
+}
+.table-row-cell {
+    -fx-background-color: rgba(246, 229, 205, 0.4746);
+    -fx-border-color: #F8E2A9;
+    -fx-border-width: 3px;
+}

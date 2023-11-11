@@ -1,0 +1,25 @@
+.anchor-pane-background-color{
+    -fx-background-color: rgba(248, 226, 169, 0.54);
+}
+.button-with-gradient {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.78), rgba(255, 196, 118, 0.8646), rgba(255, 196, 118, 0));
+    -fx-opacity: 0.58;
+    -fx-border-color: rgba(0, 0, 0, 0.27);
+    -fx-border-width: 2px;
+    -fx-text-fill: black;
+    -fx-background-insets: 0, 0 1 1 1, 1;
+    -fx-background-radius: 0;
+    -fx-background-position: 0 0, 0 0, 0 0;
+}
+
+.button-with-gradient:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.9), rgba(255, 196, 118, 1), rgba(255, 196, 118, 0.9));
+}
+
+.spinner {
+    -fx-control-inner-background: rgba(255, 196, 118, 0.2846);
+}
+
+.circular-image {
+    border-radius: 50%;
+}

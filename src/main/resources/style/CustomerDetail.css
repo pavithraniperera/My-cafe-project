@@ -1,0 +1,33 @@
+.text-with-border {
+    -fx-text-fill: FFC475; /* Make the text transparent */
+    -fx-text-stroke: black; /* Color for the text border */
+    -fx-text-stroke-width: 2px; /* Width of the text border */
+}
+.anchor-pane-with-border {
+    -fx-background-color: rgba(192, 172, 134, 0.3); /* Background color */
+    -fx-border-color: #FECB87; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 5px; /* Border corner radius (optional) */
+}
+
+.text-field-with-color {
+    -fx-background-color: rgba(246, 234, 234, 1);
+    -fx-border-color: #DD9F9F; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-text-fill: black;
+}
+.radio-button-background {
+    -fx-background-color: rgba(246, 234, 234, 1) ;/* Set your desired background color */
+    -fx-background-radius: 0; /* Optional: remove any border-radius */
+    -fx-border-color: #DD9F9F; /* Border color */
+}
+.anchor-pane-with-background {
+    -fx-background-color: rgba(246, 234, 234, 1); /* Background color */
+    -fx-border-color:  #DD9F9F; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 5px; /* Border corner radius (optional) */
+}
+
+.button-with-gradient:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.9), rgba(255, 196, 118, 1), rgba(255, 196, 118, 0.9));
+}

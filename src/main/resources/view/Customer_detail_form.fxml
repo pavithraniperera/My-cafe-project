@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1052.0" prefWidth="1788.0" stylesheets="@../style/CustomerDetail.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.CustomerDetailFormController">
+   <children>
+      <Text fill="#ffc475" layoutX="517.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-with-border" text="CUSTOMER DETAILS" wrappingWidth="816.7294921875">
+         <font>
+            <Font name="DejaVuMathTeXGyre-Regular" size="54.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="490.0" fitWidth="728.0" layoutX="1046.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Customer.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="79.0" layoutY="93.0" prefHeight="668.0" prefWidth="924.0" styleClass="anchor-pane-with-border" stylesheets="@../style/CustomerDetail.css">
+         <children>
+            <TextField layoutX="93.0" layoutY="42.0" prefHeight="62.0" prefWidth="545.0" promptText="Customer Id" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" AnchorPane.leftAnchor="93.0">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="81.0" layoutY="122.0" prefHeight="62.0" prefWidth="545.0" promptText="Customer Name" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" AnchorPane.leftAnchor="93.0">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="85.0" layoutY="208.0" prefHeight="62.0" prefWidth="545.0" promptText="Telephone" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" AnchorPane.leftAnchor="93.0">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="87.0" layoutY="295.0" prefHeight="62.0" prefWidth="545.0" promptText="Address" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" AnchorPane.leftAnchor="95.0">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+            <RadioButton layoutX="100.0" layoutY="382.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="249.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="radio-button-background" stylesheets="@../style/CustomerDetail.css" text="Male" AnchorPane.leftAnchor="93.0" AnchorPane.topAnchor="382.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="526.0" layoutY="385.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="249.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="radio-button-background" stylesheets="@../style/CustomerDetail.css" text="Female" AnchorPane.topAnchor="382.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </RadioButton>
+            <TextField layoutX="125.0" layoutY="497.0" prefHeight="62.0" prefWidth="545.0" promptText="E mail" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" AnchorPane.leftAnchor="93.0">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1164.0" layoutY="177.0" prefHeight="200.0" prefWidth="510.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="anchor-pane-with-background" stylesheets="@../style/CustomerDetail.css">
+         <children>
+            <Text fill="#e87a7a" layoutX="112.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Point" wrappingWidth="233.443359375">
+               <font>
+                  <Font name="DejaVu Sans Mono Bold" size="29.0" />
+               </font>
+            </Text>
+            <Label layoutX="146.0" layoutY="92.0" prefHeight="58.0" prefWidth="165.0" text="0" textFill="#b56767">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="45.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="111.0" layoutY="815.0" prefHeight="58.0" prefWidth="209.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/CustomerDetail.css" text="Save" AnchorPane.bottomAnchor="179.0" AnchorPane.topAnchor="815.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-save-80.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Dyuthi Regular" size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="382.0" layoutY="815.0" prefHeight="58.0" prefWidth="209.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/CustomerDetail.css" text="Update" AnchorPane.bottomAnchor="179.0" AnchorPane.topAnchor="815.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-edit-80.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Dyuthi Regular" size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="640.0" layoutY="815.0" prefHeight="58.0" prefWidth="217.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/CustomerDetail.css" text="Clear" AnchorPane.bottomAnchor="179.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-clear-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Dyuthi Regular" size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="886.0" layoutY="815.0" prefHeight="58.0" prefWidth="217.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/CustomerDetail.css" text="Delete" AnchorPane.bottomAnchor="179.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-delete-80.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Dyuthi Regular" size="23.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

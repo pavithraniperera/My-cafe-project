@@ -1,0 +1,27 @@
+.anchor-pane-with-background {
+    -fx-background-image: url("../image/background.png"); /* Reference to the image in the resources directory */
+    -fx-background-size: cover;
+    -fx-background-opacity: 0.2;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+
+}
+
+.button-with-gradient:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.9), rgba(255, 196, 118, 1), rgba(255, 196, 118, 0.9));
+}
+
+.table-view .column-header {
+    -fx-background-color: rgba(236, 211, 176, 0.82);
+}
+.table-row-cell {
+    -fx-background-color: rgba(246, 229, 205, 0.4746);
+    -fx-border-color: #F8E2A9;
+    -fx-border-width: 3px;
+}
+.text-field-with-color {
+    -fx-background-color: rgba(246, 234, 234, 1);
+    -fx-border-color: #DD9F9F; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-text-fill: black;
+}

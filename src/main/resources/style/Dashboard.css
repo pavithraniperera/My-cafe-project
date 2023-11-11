@@ -1,0 +1,76 @@
+.anchor-pane-with-background {
+    -fx-background-image: url("../image/background.png"); /* Reference to the image in the resources directory */
+    -fx-background-size: cover;
+    -fx-background-opacity: 0.2;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+
+}
+
+.anchor-pane-with-border {
+    -fx-background-color: rgba(192, 172, 134, 0.3); /* Background color */
+    -fx-border-color: #FECB87; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 5px; /* Border corner radius (optional) */
+}
+
+.button-with-gradient {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.78), rgba(255, 196, 118, 0.8646), rgba(255, 196, 118, 0));
+    -fx-opacity: 0.58;
+    -fx-border-color: rgba(0, 0, 0, 0.27);
+    -fx-border-width: 2px;
+    -fx-text-fill: black;
+    -fx-background-insets: 0, 0 1 1 1, 1;
+    -fx-background-radius: 0;
+    -fx-background-position: 0 0, 0 0, 0 0;
+}
+
+.button-with-gradient:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.9), rgba(255, 196, 118, 1), rgba(255, 196, 118, 0.9));
+}
+
+/* Define the default image style */
+.img {
+    /* Add any default styles you want */
+   // box-shadow: none; /* No box shadow by default */
+    transition: box-shadow 0.2s; /* Smooth transition for box shadow */
+
+   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Add a box shadow when clicked */
+}
+
+/* Style the image when it's clicked */
+
+.anchor-pane-background-color{
+    -fx-background-color: rgba(225, 217, 206, 0.33);
+    -fx-border-color: linear-gradient(to right, rgba(92, 56, 0, 1), rgba(92, 56, 0, 0));
+    -fx-border-width: 3px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.23), 10, 0.5, 0, 0);
+}
+.anchor-pane-background-color-1{
+    -fx-background-color: rgba(225, 217, 206, 0.33);
+
+}
+.table-view {
+    -fx-background-color: rgba(255, 255, 255, 0.5); /* White with 50% transparency */
+}
+
+/* Set the background of the table cells to transparent */
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: #F8E2A9;
+    -fx-border-width: 3px;
+}
+.table-view .column-header {
+    -fx-background-color: #F8E2A9;
+}
+
+.chart-series-area-line {
+    -fx-stroke: rgba(250, 233, 211, 0.9); /* Red color with 50% transparency for the line */
+    -fx-background-color: rgba(250, 233, 211, 0.9); /* Red color with 50% transparency for the area fill */
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}

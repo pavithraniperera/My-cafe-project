@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../style/Dashboard.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.DashboardController">
+   <children>
+      <AnchorPane layoutY="92.0" prefHeight="1050.0" prefWidth="140.0" style="-fx-background-color: ECD3B0;" stylesheets="@../style/Dashboard.css">
+         <children>
+            <VBox layoutX="20.0" layoutY="48.0" prefHeight="594.0" prefWidth="100.0" stylesheets="@../style/Dashboard.css">
+               <children>
+                  <ImageView fx:id="imgDasboard" fitHeight="90.0" fitWidth="78.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#imgDashboardClick" pickOnBounds="true" preserveRatio="true" styleClass="img">
+                     <image>
+                        <Image url="@../image/Dasboard%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgMenuItem" fitHeight="90.0" fitWidth="78.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onimgMenu" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Menue%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgCustomer" fitHeight="90.0" fitWidth="78.0" layoutX="10.0" layoutY="88.0" onMouseClicked="#CustomerMouseClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/customer%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgReservation" fitHeight="90.0" fitWidth="78.0" layoutX="10.0" layoutY="166.0" onMouseClicked="#ReservationOnClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Reservation%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgStock" fitHeight="78.0" fitWidth="84.0" layoutX="10.0" layoutY="244.0" onMouseClicked="#stockClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Stock%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgAnalytics" fitHeight="90.0" fitWidth="78.0" layoutX="10.0" layoutY="322.0" onMouseClicked="#analyticsClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Analytics%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgStaff" fitHeight="96.0" fitWidth="94.0" layoutX="10.0" layoutY="400.0" onMouseClicked="#staffClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Staff%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox layoutX="26.0" layoutY="700.0" prefHeight="232.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="imgProfile" fitHeight="90.0" fitWidth="78.0" onMouseClicked="#profileClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons-account.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="imgLogOut" fitHeight="90.0" fitWidth="78.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#logOutClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/log%20out%20icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-8.0" layoutY="-4.0" prefHeight="96.0" prefWidth="1936.0" style="-fx-background-color: ECD3B0;" stylesheets="@../style/Dashboard.css">
+         <children>
+            <ImageView fx:id="imgMenu" fitHeight="90.0" fitWidth="78.0" layoutX="33.0" layoutY="15.0" onMouseClicked="#onNenuClicked" pickOnBounds="true" preserveRatio="true" styleClass="img">
+               <image>
+                  <Image url="@../image/menu.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgExit" fitHeight="58.0" fitWidth="60.0" layoutX="1833.0" layoutY="19.0" onMouseClicked="#onExit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Exit%20icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="menuAfterClicked" fitHeight="79.0" fitWidth="90.0" layoutX="29.0" layoutY="9.0" onMouseClicked="#onAfterMenueClicked" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../image/Menu-icon-afterClicked.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane2" layoutX="140.0" layoutY="92.0" prefHeight="1052.0" prefWidth="1788.0" styleClass="anchor-pane-with-background" stylesheets="@../style/Dashboard.css">
+         <children>
+            <AnchorPane layoutX="94.0" layoutY="58.0" prefHeight="166.0" prefWidth="432.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="anchor-pane-background-color" stylesheets="@../style/Dashboard.css">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="82.0" layoutX="-7.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Analytics%20icon.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#a38686" layoutX="115.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today Revenue" wrappingWidth="248.7294921875">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="Rs.0.00">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="55.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="656.0" layoutY="59.0" prefHeight="166.0" prefWidth="432.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="anchor-pane-background-color" stylesheets="@../style/Dashboard.css">
+               <children>
+                  <ImageView fitHeight="79.0" fitWidth="70.0" layoutX="27.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8-fast-moving-consumer-goods-50.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#a38686" layoutX="115.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders Today" wrappingWidth="248.7294921875">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="0">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="55.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1240.0" layoutY="62.0" prefHeight="166.0" prefWidth="432.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="anchor-pane-background-color" stylesheets="@../style/Dashboard.css">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="82.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/customer%20icon.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#a38686" layoutX="105.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average customers" wrappingWidth="288.7294921875">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="0">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="55.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="106.0" layoutY="304.0" prefHeight="566.0" prefWidth="954.0" style="-fx-border-color: DEC8A9; -fx-border-width: 2;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
+               <children>
+                  <AreaChart layoutX="50.0" layoutY="48.0" legendSide="TOP" prefHeight="482.0" prefWidth="838.0" styleClass="chart-series-area-line" stylesheets="@../style/Dashboard.css" title="Revenue Chart">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </AreaChart>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1192.0" layoutY="296.0" prefHeight="572.0" prefWidth="484.0" style="-fx-border-color: D9AF70; -fx-border-width: 1;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
+               <children>
+                  <Text fill="#a38686" layoutX="108.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today Reservations" wrappingWidth="292.7294921875">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <TableView layoutX="74.0" layoutY="101.0" prefHeight="417.0" prefWidth="344.0" stylesheets="@../style/Dashboard.css">
+                    <columns>
+                      <TableColumn prefWidth="91.0" text="Time" />
+                      <TableColumn prefWidth="131.0" text="Table_no" />
+                        <TableColumn prefWidth="121.0" text="Cust_id" />
+                    </columns>
+                     <styleClass>
+                        <String fx:value="table-row-cell" />
+                        <String fx:value="table-view" />
+                     </styleClass>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane1" prefHeight="1046.0" prefWidth="392.0" style="-fx-background-color: E3DBCD;" visible="false">
+         <children>
+            <VBox layoutX="11.0" layoutY="54.0" prefHeight="551.0" prefWidth="294.0">
+               <children>
+                  <JFXButton fx:id="btnDashboard" buttonType="RAISED" onAction="#btnDashBoardOnAction" opacity="0.22" prefHeight="75.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="DashBoard" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="10.0" layoutY="240.0" prefHeight="200.0" prefWidth="294.0" />
+                  <JFXButton fx:id="btnMenueItem" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#onbtnmenu" opacity="0.22" prefHeight="61.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Menu Item" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                  <JFXButton fx:id="btnCustomer" buttonType="RAISED" layoutX="10.0" layoutY="85.0" onAction="#btnCustomerOnAction" opacity="0.22" prefHeight="25.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Customer" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="10.0" layoutY="391.0" prefHeight="200.0" prefWidth="294.0" />
+                  <JFXButton fx:id="btnReservation" buttonType="RAISED" layoutX="10.0" layoutY="160.0" onAction="#btnReservationOnAction" opacity="0.22" prefHeight="61.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Reservation" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="10.0" layoutY="160.0" prefHeight="200.0" prefWidth="200.0" />
+                  <JFXButton fx:id="btnStock" buttonType="RAISED" layoutX="10.0" layoutY="235.0" onAction="#btnStockOnAction" opacity="0.22" prefHeight="61.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Stock" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="10.0" layoutY="469.0" prefHeight="200.0" prefWidth="294.0" />
+                  <JFXButton fx:id="btnAnalytics" buttonType="RAISED" layoutX="10.0" layoutY="310.0" onAction="#btnAnalyticsOnAction" opacity="0.22" prefHeight="61.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Analytics" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="10.0" layoutY="160.0" prefHeight="200.0" prefWidth="294.0" />
+                  <JFXButton fx:id="btnStaff" buttonType="RAISED" layoutX="10.0" layoutY="385.0" onAction="#btnStaffOnAction" opacity="0.22" prefHeight="61.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Staff" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="10.0" layoutY="315.0" prefHeight="0.0" prefWidth="294.0" />
+               </children>
+            </VBox>
+            <VBox layoutX="11.0" layoutY="714.0" prefHeight="157.0" prefWidth="294.0">
+               <children>
+                  <JFXButton fx:id="btnProfile" buttonType="RAISED" onAction="#btnProfileOnAction" opacity="0.22" prefHeight="70.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Profile" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane prefHeight="200.0" prefWidth="294.0" />
+                  <JFXButton fx:id="btnLogOUt" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#btnLogOutOnAction" opacity="0.22" prefHeight="61.0" prefWidth="286.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Log Out" textFill="#141414">
+                     <font>
+                        <Font name="Gargi" size="28.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <ImageView fitHeight="90.0" fitWidth="78.0" layoutX="315.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

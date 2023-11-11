@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane-with-background" stylesheets="@../style/Login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.LoginFormController">
+   <children>
+      <Label layoutX="850.0" layoutY="312.0" prefHeight="38.0" prefWidth="278.0" styleClass="label-with-stroke" stylesheets="@../style/Login.css" text="SIGN IN">
+         <font>
+            <Font name="DejaVu Sans Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="738.0" layoutY="385.0" prefHeight="27.0" prefWidth="263.0" text="UserName or Email" textFill="#c15656">
+         <font>
+            <Font name="Potti Sreeramulu" size="32.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="722.0" layoutY="448.0" prefHeight="54.0" prefWidth="439.0" promptText="UserName or E mail" style="-fx-border-radius: 100; -fx-background-radius: 50;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+      <Label layoutX="738.0" layoutY="519.0" prefHeight="27.0" prefWidth="263.0" text="Password" textFill="#c15656">
+         <font>
+            <Font name="Potti Sreeramulu" size="32.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtPwd" layoutX="725.0" layoutY="585.0" prefHeight="54.0" prefWidth="433.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 100;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </PasswordField>
+      <JFXCheckBox fx:id="pwdCheckBox" checkedColor="#30ab41" layoutX="738.0" layoutY="650.0" onAction="#cbShowPasswordOnAcction" prefHeight="26.0" prefWidth="189.0" text="Show Password" textFill="#c15656">
+         <font>
+            <Font name="Potti Sreeramulu" size="19.0" />
+         </font>
+      </JFXCheckBox>
+      <Line endX="100.0" layoutX="900.0" layoutY="723.0" startX="-82.0" stroke="#ab7528e0" />
+      <JFXButton fx:id="btnLogin" layoutX="806.0" layoutY="816.0" onAction="#btnLoginOnAction" prefHeight="41.0" prefWidth="248.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Login.css" text="Loging">
+         <font>
+            <Font name="Potti Sreeramulu" size="33.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnForgotPwd" layoutX="818.0" layoutY="698.0" onAction="#btnForgotPwdONAction" prefHeight="26.0" prefWidth="183.0" style="-fx-border-radius: 50; -fx-background-radius: 50;">
+         <graphic>
+            <Label prefHeight="26.0" prefWidth="176.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" styleClass="label-hover-effect" stylesheets="@../style/Login.css" text="Forgot Password?">
+               <font>
+                  <Font name="Phetsarath OT" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Label>
+         </graphic>
+      </JFXButton>
+      <Label fx:id="lblAlert" layoutX="748.0" layoutY="511.0" prefHeight="16.0" prefWidth="288.0" text="UserName or Password is incorrect" textFill="#ee1212" visible="false" />
+      <TextField fx:id="txtPassword" layoutX="722.0" layoutY="585.0" prefHeight="54.0" prefWidth="439.0" promptText="Password" style="-fx-border-radius: 100; -fx-background-radius: 50;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css" visible="false">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</AnchorPane>
