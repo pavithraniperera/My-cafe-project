@@ -1,11 +1,11 @@
-package lk.ijse.freshBite.dto;
+package lk.ijse.freshBite.dto.tm;
 
 import lombok.Getter;
 
 import java.sql.Date;
 
 @Getter
-public class StockItemDto {
+public class StockItemTm {
     private String stockId;
     private String name;
     private  int quantity;
@@ -13,25 +13,18 @@ public class StockItemDto {
     private String sup_id;
     private  java.sql.Date date;
 
-    public StockItemDto(String stockId, String name, int quantity, double price, String sup_id, Date date) {
+    public StockItemTm(String stockId, String name, int quantity, double price, String supId, Date date) {
         this.stockId = stockId;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
-        this.sup_id = sup_id;
+        this.sup_id = supId;
         this.date = date;
     }
 
-    public StockItemDto() {
+    public StockItemTm() {
     }
 
-    public StockItemDto(String stockId, String name, int quantity, double price, String sup_id) {
-        this.stockId = stockId;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
-        this.sup_id = sup_id;
-    }
 
     public void setStockId(String stockId) {
         this.stockId = stockId;
@@ -55,12 +48,16 @@ public class StockItemDto {
 
     @Override
     public String toString() {
-        return "StockItemDto{" +
+        return "StockItemTm{" +
                 "stockId='" + stockId + '\'' +
                 ", name='" + name + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", sup_id='" + sup_id + '\'' +
                 '}';
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

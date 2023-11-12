@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -49,14 +50,20 @@
             <Font name="FreeSerif" size="22.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tableStockItem" layoutX="141.0" layoutY="244.0" prefHeight="538.0" prefWidth="1183.0" styleClass="table-row-cell" stylesheets="@../style/StockItem.css">
+      <TableView fx:id="tableStockItem" layoutX="141.0" layoutY="231.0" prefHeight="551.0" prefWidth="1183.0" stylesheets="@../style/StockItem.css">
         <columns>
-          <TableColumn fx:id="stockIdCol" prefWidth="214.0" text="Stock id" />
-          <TableColumn fx:id="nameCol" prefWidth="237.0" text="Name" />
-            <TableColumn fx:id="quantityCol" prefWidth="266.0" text="Quantity" />
-            <TableColumn fx:id="priceCol" prefWidth="224.0" text="Price" />
-            <TableColumn fx:id="supIdCol" prefWidth="239.0" text="Supplier Id" />
+          <TableColumn fx:id="stockIdCol" prefWidth="209.0" text="Stock id" />
+          <TableColumn fx:id="nameCol" prefWidth="224.0" text="Name" />
+            <TableColumn fx:id="quantityCol" prefWidth="172.0" text="Quantity(Kg/leter/count)" />
+            <TableColumn fx:id="priceCol" prefWidth="182.0" text="Price(Rs)" />
+            <TableColumn fx:id="supIdCol" prefWidth="203.0" text="Supplier Id" />
+            <TableColumn fx:id="dateCol" prefWidth="190.0" text="Supply Date" />
         </columns>
+         <styleClass>
+            <String fx:value="table-row-cell" />
+            <String fx:value="column-header" />
+            <String fx:value="column-header" />
+         </styleClass>
       </TableView>
       <JFXButton fx:id="btnSeeSupplier" layoutX="1470.0" layoutY="817.0" onAction="#btnSeeSupplierOnAction" prefHeight="78.0" prefWidth="268.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="button-with-gradient" stylesheets="@../style/StockItem.css" text="See Suppliers" AnchorPane.rightAnchor="94.0">
          <graphic>
