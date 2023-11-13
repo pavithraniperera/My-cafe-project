@@ -228,7 +228,7 @@ public class AddMenuFormController {
         );
         File selectedFile = fileChooser.showOpenDialog(pane3.getScene().getWindow());
         if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
+            Image image = new Image(selectedFile.toURI().toString(),239,232,false,true);
 
             img.setImage(image);
             imagePath = selectedFile.toURI().toString();

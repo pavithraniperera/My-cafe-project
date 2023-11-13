@@ -5,8 +5,8 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,13 +21,12 @@
             <Image url="@../image/Menue%20icon.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="79.0" layoutY="56.0" prefHeight="807.0" prefWidth="969.0">
+      <AnchorPane fx:id="paneMenu" layoutX="23.0" layoutY="56.0" prefHeight="864.0" prefWidth="1025.0">
          <children>
-            <ScrollPane layoutX="15.0" layoutY="32.0" prefHeight="832.0" prefWidth="938.0" stylesheets="@../style/Dashboard.css">
+            <ScrollPane fx:id="ScrollMenu" layoutX="-1.0" layoutY="32.0" prefHeight="832.0" prefWidth="1025.0" stylesheets="@../style/Dashboard.css">
                <content>
-                  <GridPane prefHeight="340.0" prefWidth="330.0">
+                  <GridPane fx:id="gridCard" hgap="40.0" prefHeight="161.0" prefWidth="213.0" vgap="27.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                   </GridPane>
@@ -35,26 +34,14 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1090.0" layoutY="94.0" prefHeight="822.0" prefWidth="618.0" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
+      <AnchorPane fx:id="panePay" layoutX="1090.0" layoutY="94.0" prefHeight="822.0" prefWidth="618.0" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
          <children>
-            <TreeTableView layoutX="46.0" layoutY="138.0" prefHeight="294.0" prefWidth="546.0" stylesheets="@../style/Dashboard.css">
-              <columns>
-                <TreeTableColumn prefWidth="185.0" text="Menu Item" />
-                <TreeTableColumn prefWidth="193.0" text="Quantity" />
-                  <TreeTableColumn prefWidth="167.0" text="Price(Rs)" />
-              </columns>
-               <styleClass>
-                  <String fx:value="table-row-cell" />
-                  <String fx:value="column-header" />
-                  <String fx:value="table-view" />
-               </styleClass>
-            </TreeTableView>
-            <Label layoutX="147.0" layoutY="469.0" prefHeight="53.0" prefWidth="233.0" text=" Total :" textFill="#825d2cd4">
+            <Label fx:id="lblTotal" layoutX="147.0" layoutY="469.0" prefHeight="53.0" prefWidth="233.0" text=" Total :" textFill="#825d2cd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label layoutX="307.0" layoutY="459.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
+            <Label fx:id="lblTotalValue" layoutX="307.0" layoutY="459.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
@@ -64,42 +51,42 @@
                   <Image url="@../image/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="145.0" layoutY="532.0" prefHeight="53.0" prefWidth="233.0" text="Discount:" textFill="#825d2cd4">
+            <Label fx:id="lblDiscount" layoutX="145.0" layoutY="532.0" prefHeight="53.0" prefWidth="233.0" text="Discount:" textFill="#825d2cd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label layoutX="309.0" layoutY="523.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
+            <Label fx:id="lblDiscountValue" layoutX="309.0" layoutY="523.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label layoutX="141.0" layoutY="601.0" prefHeight="53.0" prefWidth="233.0" text="Net total:" textFill="#825d2cd4">
+            <Label fx:id="lblNetTotal" layoutX="141.0" layoutY="601.0" prefHeight="53.0" prefWidth="233.0" text="Net total:" textFill="#825d2cd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label layoutX="311.0" layoutY="595.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
+            <Label fx:id="lblNetTotalValue" layoutX="311.0" layoutY="595.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <JFXButton layoutX="140.0" layoutY="672.0" prefHeight="41.0" prefWidth="320.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Pay">
+            <JFXButton fx:id="btnPay" layoutX="140.0" layoutY="672.0" onAction="#btnPayOnAction" prefHeight="41.0" prefWidth="320.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Pay">
                <font>
                   <Font name="FreeSans Bold Oblique" size="19.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="369.0" layoutY="742.0" prefHeight="41.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Recipt" AnchorPane.bottomAnchor="39.0" AnchorPane.rightAnchor="55.0">
+            <JFXButton fx:id="btnRecipt" layoutX="369.0" layoutY="742.0" onAction="#btnReciptOnAction" prefHeight="41.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Recipt" AnchorPane.bottomAnchor="39.0" AnchorPane.rightAnchor="55.0">
                <font>
                   <Font name="FreeMono Bold Oblique" size="19.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="44.0" layoutY="734.0" prefHeight="41.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Remove" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="44.0">
+            <JFXButton fx:id="btnRemove" layoutX="44.0" layoutY="734.0" onAction="#btnRemoveOnAction" prefHeight="41.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="Remove" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="44.0">
                <font>
                   <Font name="FreeMono Bold Oblique" size="19.0" />
                </font>
             </JFXButton>
-            <Label layoutX="504.0" layoutY="38.0" prefHeight="32.0" prefWidth="106.0" text="Label" textFill="#5e5c02" />
+            <Label fx:id="lblDate" layoutX="504.0" layoutY="38.0" prefHeight="32.0" prefWidth="106.0" text="Label" textFill="#5e5c02" />
             <Label layoutX="446.0" layoutY="38.0" prefHeight="32.0" prefWidth="58.0" text="Date:" textFill="#6b4949">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="15.0" />
@@ -110,8 +97,20 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="504.0" layoutY="72.0" prefHeight="32.0" prefWidth="106.0" text="Label" textFill="#5e5c02" />
-            <JFXComboBox focusColor="#a88a40" layoutX="100.0" layoutY="58.0" prefHeight="24.0" prefWidth="106.0" promptText="CustomerId" />
+            <Label fx:id="lblName" layoutX="504.0" layoutY="72.0" prefHeight="32.0" prefWidth="106.0" text="Label" textFill="#5e5c02" />
+            <JFXComboBox fx:id="combCustId" focusColor="#a88a40" layoutX="100.0" layoutY="58.0" prefHeight="24.0" prefWidth="106.0" promptText="CustomerId" />
+            <TableView fx:id="tableAddCart" layoutX="57.0" layoutY="133.0" prefHeight="298.0" prefWidth="508.0" stylesheets="@../style/MenuItem.css">
+              <columns>
+                <TableColumn fx:id="itemCol" prefWidth="197.0" text="Menu Item" />
+                <TableColumn fx:id="quantityCol" prefWidth="120.0" text="Quantity" />
+                  <TableColumn fx:id="priceCol" prefWidth="117.0" text="Price" />
+                  <TableColumn fx:id="actionCol" prefWidth="73.0" text="Action" />
+              </columns>
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="table-row-cell" />
+               </styleClass>
+            </TableView>
          </children>
       </AnchorPane>
       <JFXButton fx:id="btnNewMenu" layoutX="453.0" layoutY="6.0" onAction="#btnNewMenuOnAction" prefHeight="41.0" prefWidth="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="New Menu">

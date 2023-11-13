@@ -21,5 +21,7 @@
 }
 
 .circular-image {
-    border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-shape: "M50,0 A50,50 0 1,1 0,50 A50,50 0 0,1 50,0 Z";
 }

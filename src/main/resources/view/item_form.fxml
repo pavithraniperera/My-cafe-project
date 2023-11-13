@@ -9,45 +9,49 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="334.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.ItemFormController">
+<AnchorPane fx:id="mainPane" prefHeight="330.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.ItemFormController">
    <children>
-      <AnchorPane layoutY="82.0" prefHeight="253.0" prefWidth="328.0" styleClass="anchor-pane-background-color" stylesheets="@../style/itemCard.css">
+      <AnchorPane fx:id="subPane" layoutY="82.0" prefHeight="253.0" prefWidth="328.0" styleClass="anchor-pane-background-color" stylesheets="@../style/itemCard.css">
          <children>
-            <AnchorPane layoutX="94.0" layoutY="-77.0" styleClass="anchor-pane-background-color">
-               <children>
-                  <VBox prefHeight="108.0" prefWidth="121.0">
-                     <children>
-                        <ImageView fitHeight="117.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" style="-fx-image-border-radius: 50;">
-                           <image>
-                              <Image url="@../image/summer-desserts.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <Label layoutX="80.0" layoutY="58.0" prefHeight="27.0" prefWidth="228.0" text="Food/  Dessert" textFill="#b96565">
+            <Label fx:id="lblType" layoutX="80.0" layoutY="58.0" prefHeight="27.0" prefWidth="228.0" text="Food/  Dessert" textFill="#b96565">
                <font>
                   <Font name="Gayathri Bold" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="75.0" prefHeight="54.0" prefWidth="194.0" text="Summer Dessert" textFill="#a38686">
+            <Label fx:id="lblName" layoutX="51.0" layoutY="75.0" prefHeight="61.0" prefWidth="263.0" text="Summer Dessert" textFill="#a38686">
                <font>
                   <Font name="Dhurjati" size="31.0" />
                </font>
             </Label>
-            <JFXButton layoutX="57.0" layoutY="187.0" prefHeight="43.0" prefWidth="122.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" styleClass="button-with-gradient" stylesheets="@../style/itemCard.css" text="Add">
+            <JFXButton fx:id="btnAdd" layoutX="57.0" layoutY="187.0" onAction="#btnAddOnAction" prefHeight="43.0" prefWidth="122.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" styleClass="button-with-gradient" stylesheets="@../style/itemCard.css" text="Add">
                <font>
                   <Font name="Jamrul" size="17.0" />
                </font>
             </JFXButton>
-            <Spinner layoutX="194.0" layoutY="192.0" prefHeight="33.0" prefWidth="64.0" stylesheets="@../style/itemCard.css" />
-            <Label layoutX="93.0" layoutY="127.0" prefHeight="33.0" prefWidth="104.0" text="Rs.400.00" textFill="#d32222">
+            <Spinner fx:id="spinnerQuantity" layoutX="194.0" layoutY="192.0" prefHeight="33.0" prefWidth="64.0" stylesheets="@../style/itemCard.css" />
+            <Label fx:id="lblPrice" layoutX="128.0" layoutY="128.0" prefHeight="33.0" prefWidth="103.0" text="400.00" textFill="#d32222">
                <font>
                   <Font name="Gayathri Bold" size="19.0" />
                </font>
             </Label>
+            <Label layoutX="94.0" layoutY="131.0" prefHeight="26.0" prefWidth="64.0" text="RS." textFill="#d32222">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="87.0" prefHeight="143.0" prefWidth="155.0" stylesheets="@../style/itemCard.css">
+         <children>
+            <VBox prefHeight="108.0" prefWidth="121.0">
+               <children>
+                  <ImageView fx:id="imgMenu" fitHeight="129.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" style="-fx-image-border-radius: 50;" styleClass="circular-image">
+                     <image>
+                        <Image url="@../image/summer-desserts.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>

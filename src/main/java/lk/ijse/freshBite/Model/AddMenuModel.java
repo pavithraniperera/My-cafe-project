@@ -59,9 +59,7 @@ public class AddMenuModel {
         preparedStatement.setInt(4,dto.getQtyOnhand());
         preparedStatement.setString(5, dto.getStockId());
         preparedStatement.setString(6, dto.getStatus());
-        String path = dto.getImagePath();
-        path = path.replace("\\","\\\\");
-        preparedStatement.setString(7, path);
+        preparedStatement.setString(7, dto.getImagePath());
         preparedStatement.setString(8, dto.getItemId());
         return preparedStatement.executeUpdate()>0;
 
@@ -107,6 +105,6 @@ public class AddMenuModel {
         while (resultSet.next()){
             path=resultSet.getString(1);
         }
-        return new Image(path);
+        return new Image(path,239,232,false,true);
     }
 }
