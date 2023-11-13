@@ -227,5 +227,6 @@ public class StockItemFormController {
         txtQuantity.setText("");
         txtStockId.setText("");
         combSupId.setValue(null);
+
     }
 }
