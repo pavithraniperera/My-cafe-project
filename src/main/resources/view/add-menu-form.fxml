@@ -124,7 +124,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <ComboBox fx:id="cmbId" layoutX="596.0" layoutY="244.0" prefHeight="60.0" prefWidth="217.0" promptText="Stock id" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="text-field-with-color" stylesheets="@../style/AddMenu.css" />
+            <ComboBox fx:id="cmbId" layoutX="596.0" layoutY="244.0" onAction="#setOnAction" prefHeight="60.0" prefWidth="217.0" promptText="Stock id" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="text-field-with-color" stylesheets="@../style/AddMenu.css" />
             <ComboBox fx:id="cmbStatus" layoutX="855.0" layoutY="246.0" prefHeight="60.0" prefWidth="217.0" promptText="Status" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="text-field-with-color" stylesheets="@../style/AddMenu.css" />
          </children>
       </AnchorPane>

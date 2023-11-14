@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import lk.ijse.freshBite.Model.AddMenuModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
+import lk.ijse.freshBite.dto.StockItemDto;
 import lk.ijse.freshBite.dto.tm.MenuTm;
 
 import java.io.File;
@@ -161,14 +162,13 @@ public class AddMenuFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String stockId = String.valueOf(cmbId.getValue());
         String itemId = txtItemId.getText();
         String name = txtName.getText();
         String type = TxtType.getText();
         int qtyOnhand = Integer.parseInt(txtStock.getText());
         double price = Double.parseDouble(txtPrice.getText());
         String status = String.valueOf(cmbStatus.getValue());
-        String stockId = String.valueOf(cmbId.getValue());
-
 
         var dto = new AddMenuDto(itemId,name,type,qtyOnhand,price,status,stockId,imagePath);
         try {
@@ -181,6 +181,7 @@ public class AddMenuFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        clearFields();
 
     }
 
@@ -224,7 +225,7 @@ public class AddMenuFormController {
     void btnImportOnAction(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
         );
         File selectedFile = fileChooser.showOpenDialog(pane3.getScene().getWindow());
         if (selectedFile != null) {
@@ -246,9 +247,14 @@ public class AddMenuFormController {
         double price = Double.parseDouble(txtPrice.getText());
         String status = String.valueOf(cmbStatus.getValue());
         String stockId = String.valueOf(cmbId.getValue());
+       Image image = img.getImage();
+       String path = null;
+       if (image!=null){
+           path = image.getUrl();
+       }
 
 
-        var dto = new AddMenuDto(itemId,name,type,qtyOnhand,price,status,stockId,imagePath);
+        var dto = new AddMenuDto(itemId,name,type,qtyOnhand,price,status,stockId,path);
         try {
             boolean isUpdate = model.updateMenu(dto);
             if (isUpdate){
@@ -257,6 +263,7 @@ public class AddMenuFormController {
         } catch (SQLException e) {
            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+        clearFields();
 
     }
     private void clearFields(){
@@ -271,4 +278,14 @@ public class AddMenuFormController {
         TxtType.setText("");
     }
 
+    public void setOnAction(ActionEvent actionEvent) {
+        String stockId = String.valueOf(cmbId.getValue());
+        try {
+            StockItemDto itemDto = model.getItemDetail(stockId);
+            txtStock.setText(String.valueOf(itemDto.getQuantity()));
+            txtName.setText(itemDto.getName());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

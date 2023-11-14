@@ -9,7 +9,10 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.freshBite.Model.ItemCardModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
+
+import java.sql.SQLException;
 
 public class ItemFormController {
 
@@ -38,7 +41,14 @@ public class ItemFormController {
     private AnchorPane subPane;
     private AddMenuDto dto;
     private SpinnerValueFactory<Integer> spin;
+    private  int qty;
+    private ItemCardModel model = new ItemCardModel();
+    public void initialize(){
+        setQuantity();
+
+    }
      void setData(AddMenuDto dto){
+       // this.dto = dto;
          System.out.println(dto.getImagePath());
         lblName.setText(dto.getName());
         lblPrice.setText(String.valueOf(dto.getSellPrice()));
@@ -46,16 +56,39 @@ public class ItemFormController {
         Image image = new Image(dto.getImagePath());
         imgMenu.setImage(image);
         imgMenu.getStyleClass().add("circular-image");
-
+         checkAvailabillity();
     }
     void setQuantity(){
          spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
          spinnerQuantity.setValueFactory(spin);
+         spinnerQuantity.setEditable(true);
+
     }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+         qty = spinnerQuantity.getValue();
+        try {
+            String checkAvailability = model.getStatus(lblName.getText());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (qty ==0){
 
+         }
+
+    }
+    void checkAvailabillity(){
+        try {
+            String checkAvailability = model.getStatus(lblName.getText());
+            System.out.println(lblName.getText());
+            System.out.println(checkAvailability);
+            if (checkAvailability.equals("Unavailable")) {
+                mainPane.setOpacity(0.5);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -3,6 +3,7 @@ package lk.ijse.freshBite.Model;
 import javafx.scene.image.Image;
 import lk.ijse.freshBite.db.DbConnection;
 import lk.ijse.freshBite.dto.AddMenuDto;
+import lk.ijse.freshBite.dto.StockItemDto;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -106,5 +107,17 @@ public class AddMenuModel {
             path=resultSet.getString(1);
         }
         return new Image(path,239,232,false,true);
+    }
+ public StockItemDto getItemDetail(String id) throws SQLException {
+     Connection connection = DbConnection.getInstance().getConnection();
+     String sql = "SELECT * FROM stock_item WHERE stock_id=?";
+     PreparedStatement preparedStatement = connection.prepareStatement(sql);
+     preparedStatement.setString(1,id);
+     ResultSet resultSet=  preparedStatement.executeQuery();
+     StockItemDto dto = null;
+     while (resultSet.next()){
+         dto = new StockItemDto(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(4));
+     }
+      return  dto;
     }
 }

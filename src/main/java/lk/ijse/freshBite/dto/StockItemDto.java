@@ -33,6 +33,13 @@ public class StockItemDto {
         this.sup_id = sup_id;
     }
 
+    public StockItemDto(String stockId, String name, int quantity) {
+        this.stockId = stockId;
+        this.name = name;
+        this.quantity = quantity;
+
+    }
+
     public void setStockId(String stockId) {
         this.stockId = stockId;
     }

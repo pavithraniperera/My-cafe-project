@@ -13,12 +13,12 @@
    <children>
       <AnchorPane fx:id="subPane" layoutY="82.0" prefHeight="253.0" prefWidth="328.0" styleClass="anchor-pane-background-color" stylesheets="@../style/itemCard.css">
          <children>
-            <Label fx:id="lblType" layoutX="80.0" layoutY="58.0" prefHeight="27.0" prefWidth="228.0" text="Food/  Dessert" textFill="#b96565">
+            <Label fx:id="lblType" layoutX="70.0" layoutY="58.0" prefHeight="33.0" prefWidth="238.0" text="Food/  Dessert" textFill="#b96565">
                <font>
-                  <Font name="Gayathri Bold" size="19.0" />
+                  <Font name="Gayathri Regular" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="lblName" layoutX="51.0" layoutY="75.0" prefHeight="61.0" prefWidth="263.0" text="Summer Dessert" textFill="#a38686">
+            <Label fx:id="lblName" layoutX="51.0" layoutY="75.0" prefHeight="61.0" prefWidth="263.0" textFill="#a38686">
                <font>
                   <Font name="Dhurjati" size="31.0" />
                </font>
