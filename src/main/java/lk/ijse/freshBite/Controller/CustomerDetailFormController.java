@@ -6,15 +6,27 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import lk.ijse.freshBite.Model.CustomerDetailModel;
 import lk.ijse.freshBite.dto.CustomerDetailDto;
 import lk.ijse.freshBite.dto.tm.CustomerTm;
 
+import java.awt.*;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class CustomerDetailFormController {
     public Label lblMembership;
+    public Label lblChangeDiscount;
 
     public  void initialize(){
         genderGrp = new ToggleGroup();
@@ -25,7 +37,8 @@ public class CustomerDetailFormController {
                 "VIP",
                 "Gold",
                 "Silver",
-                "Bronze"
+                "Bronze",
+                "None"
         );
         ComBoxMemebership.setItems(oblist);
 
@@ -70,6 +83,7 @@ public class CustomerDetailFormController {
     @FXML
     private TextField txtTelephone;
     private CustomerDetailModel model = new CustomerDetailModel();
+    Map<String, Double> newDiscounts = new HashMap<>();
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
@@ -108,6 +122,7 @@ public class CustomerDetailFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+        clearFields();
 
 
     }
@@ -130,6 +145,7 @@ public class CustomerDetailFormController {
         } catch (SQLException e) {
            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+        clearFields();
 
     }
     private String handleRadioBtn (){
@@ -188,4 +204,63 @@ public class CustomerDetailFormController {
     }
 
 
+    public void membershipOnAction(ActionEvent actionEvent) {
+        String memberShip = ComBoxMemebership.getValue();
+        lblMembership.setText(memberShip);
+    }
+
+    public void lblClickedOnAction(MouseEvent mouseEvent) {
+        showChangedDiscountDialog();
+    }
+
+    private void showChangedDiscountDialog() {
+        Dialog<Map<String, Double>> dialog = new Dialog<>();
+        dialog.setTitle("Change Discount Percentages");
+        dialog.setHeaderText("Set new discount percentages for membership levels");
+
+        // Create save button and add it to the dialog pane
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        MembershipLevelController.getMembershipLevels().forEach((membership, level) -> {
+            Label label = new Label(membership + " Discount:");
+            TextField textField = new TextField(String.valueOf(level.getDiscountPercentage()));
+            textField.setPromptText("Enter discount percentage");
+
+            // Create a local final variable to capture the current membership in the loop
+            final String currentMembership = membership;
+
+            grid.add(label, 0, grid.getChildren().size() / 2);
+            grid.add(textField, 1, grid.getChildren().size() / 2);
+
+            // Bind the text property to the newDiscounts map using the local variable
+            textField.textProperty().addListener((observable, oldValue, newValue) -> {
+                // Save the new value directly to the map using the local variable
+                newDiscounts.put(currentMembership, Double.parseDouble(newValue));
+            });
+        });
+
+        dialog.getDialogPane().setContent(grid);
+
+
+        // Convert the result to a map when the save button is clicked
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveButtonType) {
+                return newDiscounts;
+            }
+            return null;
+        });
+
+        // Show the dialog and wait for the user's response
+        Optional<Map<String, Double>> result = dialog.showAndWait();
+        result.ifPresent(newDiscountsMap -> {
+            // Handle the result if needed
+        });
+
+    }
 }

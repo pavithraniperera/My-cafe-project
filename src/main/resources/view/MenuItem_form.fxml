@@ -34,14 +34,14 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panePay" layoutX="1090.0" layoutY="94.0" prefHeight="822.0" prefWidth="618.0" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
+      <AnchorPane fx:id="panePay" layoutX="1090.0" layoutY="94.0" prefHeight="822.0" prefWidth="618.0" styleClass="anchor-pane-background-color-1" stylesheets="@../style/MenuItem.css">
          <children>
             <Label fx:id="lblTotal" layoutX="147.0" layoutY="469.0" prefHeight="53.0" prefWidth="233.0" text=" Total :" textFill="#825d2cd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="lblTotalValue" layoutX="307.0" layoutY="459.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
+            <Label layoutX="307.0" layoutY="459.0" prefHeight="63.0" prefWidth="58.0" text="RS." textFill="#dd764dd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="lblDiscountValue" layoutX="309.0" layoutY="523.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
+            <Label fx:id="lblDiscountValue" layoutX="358.0" layoutY="523.0" prefHeight="63.0" prefWidth="184.0" text="0.00" textFill="#dd764dd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
@@ -66,7 +66,7 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="lblNetTotalValue" layoutX="311.0" layoutY="595.0" prefHeight="63.0" prefWidth="233.0" text="RS.0.00" textFill="#dd764dd4">
+            <Label fx:id="lblNetTotalValue" layoutX="360.0" layoutY="595.0" prefHeight="63.0" prefWidth="184.0" text="0.00" textFill="#dd764dd4">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
                </font>
@@ -86,7 +86,7 @@
                   <Font name="FreeMono Bold Oblique" size="19.0" />
                </font>
             </JFXButton>
-            <Label fx:id="lblDate" layoutX="504.0" layoutY="38.0" prefHeight="32.0" prefWidth="106.0" text="Label" textFill="#5e5c02" />
+            <Label fx:id="lblDate" layoutX="504.0" layoutY="38.0" prefHeight="32.0" prefWidth="106.0" textFill="#5e5c02" />
             <Label layoutX="446.0" layoutY="38.0" prefHeight="32.0" prefWidth="58.0" text="Date:" textFill="#6b4949">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="15.0" />
@@ -97,20 +97,49 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblName" layoutX="504.0" layoutY="72.0" prefHeight="32.0" prefWidth="106.0" text="Label" textFill="#5e5c02" />
-            <JFXComboBox fx:id="combCustId" focusColor="#a88a40" layoutX="100.0" layoutY="58.0" prefHeight="24.0" prefWidth="106.0" promptText="CustomerId" />
-            <TableView fx:id="tableAddCart" layoutX="57.0" layoutY="133.0" prefHeight="298.0" prefWidth="508.0" stylesheets="@../style/MenuItem.css">
+            <Label fx:id="lblName" layoutX="504.0" layoutY="72.0" prefHeight="32.0" prefWidth="106.0" textFill="#5e5c02" />
+            <JFXComboBox fx:id="combCustId" focusColor="#a88a40" layoutX="100.0" layoutY="76.0" onAction="#SetNameOnAction" prefHeight="24.0" prefWidth="106.0" promptText="CustomerId" />
+            <TableView fx:id="tableAddCart" layoutX="57.0" layoutY="133.0" prefHeight="298.0" prefWidth="510.0" stylesheets="@../style/MenuItem.css">
               <columns>
                 <TableColumn fx:id="itemCol" prefWidth="197.0" text="Menu Item" />
                 <TableColumn fx:id="quantityCol" prefWidth="120.0" text="Quantity" />
                   <TableColumn fx:id="priceCol" prefWidth="117.0" text="Price" />
-                  <TableColumn fx:id="actionCol" prefWidth="73.0" text="Action" />
+                  <TableColumn fx:id="actionCol" text="Action" />
               </columns>
                <styleClass>
                   <String fx:value="column-header" />
                   <String fx:value="table-row-cell" />
                </styleClass>
             </TableView>
+            <Label fx:id="lblTotalValue" layoutX="359.0" layoutY="459.0" prefHeight="63.0" prefWidth="233.0" text="0.00" textFill="#dd764dd4">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="307.0" layoutY="523.0" prefHeight="63.0" prefWidth="58.0" text="RS." textFill="#dd764dd4">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="307.0" layoutY="595.0" prefHeight="63.0" prefWidth="58.0" text="RS." textFill="#dd764dd4">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="29.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrderId" layoutX="100.0" layoutY="31.0" prefHeight="32.0" prefWidth="106.0" textFill="#574911">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="15.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnAddCustomer" layoutX="213.0" layoutY="76.0" onAction="#btnAddCustomerOnAction" text="New" textFill="#50ae43">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8-add-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
       <JFXButton fx:id="btnNewMenu" layoutX="453.0" layoutY="6.0" onAction="#btnNewMenuOnAction" prefHeight="41.0" prefWidth="230.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button-with-gradient" stylesheets="@../style/Dashboard.css" text="New Menu">

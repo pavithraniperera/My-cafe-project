@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -18,7 +19,7 @@
             <Font name="DejaVuMathTeXGyre-Regular" size="54.0" />
          </font>
       </Text>
-      <ImageView fitHeight="490.0" fitWidth="728.0" layoutX="1046.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="490.0" fitWidth="728.0" layoutX="1047.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Customer.png" />
          </image>
@@ -60,7 +61,7 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
                </font>
             </TextField>
-            <JFXComboBox fx:id="ComBoxMemebership" focusColor="#da88bb" layoutX="105.0" layoutY="593.0" prefHeight="48.0" prefWidth="259.0" promptText="Membership" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" />
+            <JFXComboBox fx:id="ComBoxMemebership" focusColor="#da88bb" layoutX="105.0" layoutY="593.0" onAction="#membershipOnAction" prefHeight="48.0" prefWidth="259.0" promptText="Membership" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-color" stylesheets="@../style/CustomerDetail.css" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1164.0" layoutY="177.0" prefHeight="200.0" prefWidth="510.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="anchor-pane-with-background" stylesheets="@../style/CustomerDetail.css">
@@ -125,5 +126,12 @@
             <Font name="Dyuthi Regular" size="23.0" />
          </font>
       </JFXButton>
+      <Label layoutX="1193.0" layoutY="393.0" prefHeight="16.0" prefWidth="471.0" text="Do you want to change the discount precentage for membership Level" textFill="#908a42" />
+      <Label fx:id="lblChangeDiscount" layoutX="1329.0" layoutY="409.0" onMouseClicked="#lblClickedOnAction" prefHeight="16.0" prefWidth="137.0" text="Click here" textFill="#5e5639">
+         <font>
+            <Font name="DejaVu Sans" size="13.0" />
+         </font>
+      </Label>
+      <Line endX="242.5" endY="24.0" layoutX="1155.0" layoutY="401.0" startX="174.0" startY="24.0" stroke="#bfab50" />
    </children>
 </AnchorPane>

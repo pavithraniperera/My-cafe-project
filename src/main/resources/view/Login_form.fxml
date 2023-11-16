@@ -32,7 +32,7 @@
             <Font name="Potti Sreeramulu" size="32.0" />
          </font>
       </Label>
-      <PasswordField fx:id="txtPwd" layoutX="725.0" layoutY="585.0" prefHeight="54.0" prefWidth="433.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 100;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
+      <PasswordField fx:id="txtPwd" layoutX="725.0" layoutY="585.0" prefHeight="54.0" prefWidth="439.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 100;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

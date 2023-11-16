@@ -7,25 +7,31 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.TableView;
 import lk.ijse.freshBite.Model.MenueItemModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
+import lk.ijse.freshBite.dto.tm.ItemCardTm;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class MenuItemFormController {
 
     public JFXButton btnNewMenu;
     public JFXButton btnShowTable;
     public AnchorPane pane2;
+    public Label lblOrderId;
+    public JFXButton btnAddCustomer;
     @FXML
     private ScrollPane ScrollMenu;
 
@@ -44,7 +50,7 @@ public class MenuItemFormController {
 
 
     @FXML
-    private JFXComboBox<?> combCustId;
+    private JFXComboBox<String> combCustId;
 
     @FXML
     private GridPane gridCard;
@@ -90,14 +96,35 @@ public class MenuItemFormController {
     private TableColumn<?, ?> quantityCol;
 
     @FXML
-    private TableView<?> tableAddCart;
+    private TableView<ItemCardTm> tableAddCart;
     private MenueItemModel model = new MenueItemModel();
+    private  ItemFormController itemFormController;
+    private ObservableList<ItemCardTm> cartItems = FXCollections.observableArrayList();
    private ObservableList<AddMenuDto> menuList = FXCollections.observableArrayList();
     public void initialize(){
      menuDisplay();
+     loadCustId();
+     displayDate();
+
 
     }
 
+    private void displayDate() {
+        lblDate.setText(String.valueOf(LocalDate.now()));
+    }
+
+    private void loadCustId()  {
+        ObservableList<String> custList = FXCollections.observableArrayList();
+        try {
+            List<String> list = model.getAllCustId();
+            for (String id : list){
+                custList.add(id);
+            }
+            combCustId.setItems(custList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @FXML
@@ -159,6 +186,7 @@ public class MenuItemFormController {
                 AnchorPane pane = loader.load();
                 ItemFormController card = loader.getController();
                 card.setData(menuList.get(i));
+                card.setMenuItemFormController(this);
                 if (col==3){
                     col=0;
                     row++;
@@ -169,4 +197,124 @@ public class MenuItemFormController {
             }
         }
     }
+
+    public void SetNameOnAction(ActionEvent actionEvent) {
+        String id = combCustId.getValue();
+        try {
+            String name = model.getName(id);
+            if(name!= null){
+                lblName.setText(name);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void btnAddCustomerOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/Customer_detail_form.fxml"));
+        pane2.getChildren().removeAll();
+
+        pane2.getChildren().setAll(fxml);
+    }
+    private void generateNextOrderId(){
+
+    }
+    public void setTableValue(AddMenuDto dto, int qty){
+        JFXButton button = createRemoveButton();
+        setRemoveBtnOnAction(button);
+       // ItemCardDto itemCardDto = new ItemCardDto(dto,qty);
+        itemCol.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        actionCol.setCellValueFactory(new PropertyValueFactory<>("button"));
+        double price = dto.getSellPrice()*qty;
+        boolean itemExit = false;
+        for (ItemCardTm cartItem : cartItems){
+            if (cartItem.getItemName().equals(dto.getName())) {
+                // If the item exists, update the quantity
+                cartItem.setQty(cartItem.getQty() + qty);
+                cartItem.setPrice(dto.getSellPrice()*(cartItem.getQty()));
+                itemExit = true;
+                break;
+            }
+        }
+        if (!itemExit) {
+            cartItems.add(new ItemCardTm(dto.getName(), qty, price, button));
+        }
+        tableAddCart.setItems(cartItems);
+        tableAddCart.refresh();
+        calculateTotal();
+
+
+
+
+    }
+
+    private void setRemoveBtnOnAction(JFXButton button) {
+        button.setOnAction((e)->{
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+            if (type.orElse(no) == yes) {
+                int focusedIndex = tableAddCart.getSelectionModel().getSelectedIndex();
+
+                cartItems.remove(focusedIndex);
+                tableAddCart.refresh();
+                calculateTotal();
+
+
+            }
+        });
+    }
+
+    private JFXButton createRemoveButton() {
+        JFXButton button = new JFXButton();
+        ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/image/icons8-delete-80.png")));
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        button.setGraphic(imageView);
+        button.setCursor(Cursor.HAND);
+        return button;
+
+    }
+    private  void calculateTotal(){
+        double total = 0;
+     for (ItemCardTm cartItem : cartItems){
+         total+= cartItem.getPrice();
+     }
+     calculateDisCount(total);
+     lblTotalValue.setText(String.valueOf(total));
+    }
+    public void calculateDisCount(double total){
+        String id = combCustId.getValue();
+        double discount = 0;
+        try {
+            String membership = model.getMembership(id);
+           switch (membership){
+               case "Bronze" : {discount = total*0.05;}
+               break;
+               case "Gold" :{discount = total*0.2;}
+               break;
+               case "VIP" : {discount=total*0.15;}
+               break;
+               case "Silver" :{discount = total*0.1;}
+               break;
+               case "None" :{discount=total*0;}
+           }
+           lblDiscountValue.setText(String.valueOf(discount));
+           netTotal(total,discount);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void netTotal(double total, double discount){
+        float netTotal = (float) (total-discount);
+        lblNetTotalValue.setText(String.valueOf(netTotal));
+    }
+
+
 }

@@ -32,4 +32,42 @@ public class MenueItemModel {
         }
         return dtoList;
     }
+
+    public List<String> getAllCustId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT customer_id FROM customers";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<String> idList = new ArrayList<>();
+        while (resultSet.next()){
+            idList.add(resultSet.getString(1));
+        }
+        return  idList;
+    }
+
+    public String getName(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT name FROM customers WHERE customer_id =?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        String name = null;
+        while (resultSet.next()){
+            name= resultSet.getString(1);
+        }
+        return  name;
+    }
+
+    public String getMembership(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT membership_level FROM customers WHERE customer_id =?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        String membership = null;
+        while (resultSet.next()){
+            membership= resultSet.getString(1);
+        }
+        return  membership;
+    }
 }

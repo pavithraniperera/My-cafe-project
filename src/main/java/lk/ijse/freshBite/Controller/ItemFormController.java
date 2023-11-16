@@ -3,6 +3,7 @@ package lk.ijse.freshBite.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -11,8 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.freshBite.Model.ItemCardModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
+import lk.ijse.freshBite.dto.ItemCardDto;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemFormController {
 
@@ -43,6 +47,8 @@ public class ItemFormController {
     private SpinnerValueFactory<Integer> spin;
     private  int qty;
     private ItemCardModel model = new ItemCardModel();
+    private MenuItemFormController menuItemFormController ;
+    private List<ItemCardDto> cartItems = new ArrayList<>();
     public void initialize(){
         setQuantity();
 
@@ -64,18 +70,36 @@ public class ItemFormController {
          spinnerQuantity.setEditable(true);
 
     }
+    public void setMenuItemFormController(MenuItemFormController menuItemFormController) {
+        this.menuItemFormController = menuItemFormController;
+    }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
          qty = spinnerQuantity.getValue();
         try {
             String checkAvailability = model.getStatus(lblName.getText());
-        } catch (SQLException e) {
+            if (checkAvailability.equals("Unavailable")) {
+                new Alert(Alert.AlertType.ERROR, lblName.getText() + " is not available in stock").show();
+            } else if (qty == 0) {
+                new Alert(Alert.AlertType.ERROR, "Please Enter the quantity").show();
+            } else {
+                String name = lblName.getText();
+                AddMenuDto dto = model.getItemDetails(name);
+                System.out.println(dto);
+                // Add the item to the cart
+                cartItems.add(new ItemCardDto(dto, qty));
+                System.out.println(cartItems);
+                // Update the TableView in MenuItemFormController
+                menuItemFormController.setTableValue(dto, qty);
+            }
+            } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (qty ==0){
 
-         }
+
+
+
 
     }
     void checkAvailabillity(){
