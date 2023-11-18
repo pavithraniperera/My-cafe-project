@@ -13,11 +13,13 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.freshBite.Model.StockItemModel;
 import lk.ijse.freshBite.dto.StockItemDto;
 import lk.ijse.freshBite.dto.tm.StockItemTm;
+import lk.ijse.freshBite.regex.RegexPattern;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class StockItemFormController {
 
@@ -84,6 +86,7 @@ public class StockItemFormController {
         setCellValueFactory();
         loadAllItems();
         tableListener();
+        generateNextStockId();
 
 
     }
@@ -133,22 +136,32 @@ public class StockItemFormController {
 
     @FXML
     void btnAddItemOnAction(ActionEvent event) {
-        String stockId = txtStockId.getText();
-        String name = txtName.getText();
-        int quantity = Integer.parseInt(txtQuantity.getText());
-        double price = Double.parseDouble(txtPrice.getText());
-        String sup_id = (String) combSupId.getValue();
-        var dto = new StockItemDto(stockId,name,quantity,price,sup_id);
-        try {
-            boolean isAdd = model.addItems(dto);
-            if (isAdd){
-                new Alert(Alert.AlertType.CONFIRMATION,"Item add Successful");
+        if (validation()) {
+            String stockId = txtStockId.getText();
+            String name = txtName.getText();
+            int quantity = Integer.parseInt(txtQuantity.getText());
+            double price = Double.parseDouble(txtPrice.getText());
+            String sup_id = (String) combSupId.getValue();
+            var dto = new StockItemDto(stockId, name, quantity, price, sup_id);
+            try {
+                boolean isAdd = model.addItems(dto);
+                if (isAdd) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Item add Successful");
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage());
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage());
+            clearFields();
         }
 
-
+    }
+    public void generateNextStockId(){
+        try {
+            String nextId = model.getNextStockId();
+            txtStockId.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -188,21 +201,25 @@ public class StockItemFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String stockId = txtStockId.getText();
-        String name = txtName.getText();
-        int quantity = Integer.parseInt(txtQuantity.getText());
-        double price = Double.parseDouble(txtPrice.getText());
-        String sup_id = (String) combSupId.getValue();
-        var dto = new StockItemDto(stockId,name,quantity,price,sup_id);
-        boolean isUpdated = false;
-        try {
-            isUpdated = model.updateItems(dto);
+        if (validation()) {
+            String stockId = txtStockId.getText();
+            String name = txtName.getText();
+            int quantity = Integer.parseInt(txtQuantity.getText());
+            double price = Double.parseDouble(txtPrice.getText());
+            String sup_id = (String) combSupId.getValue();
+            var dto = new StockItemDto(stockId, name, quantity, price, sup_id);
+            boolean isUpdated = false;
+            try {
+                isUpdated = model.updateItems(dto);
 
-            if (isUpdated){
-                new Alert(Alert.AlertType.CONFIRMATION,"Item Information Updated").show();
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Item Information Updated").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-           new  Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            clearFields();
+
         }
 
     }
@@ -228,5 +245,19 @@ public class StockItemFormController {
         txtStockId.setText("");
         combSupId.setValue(null);
 
+    }
+    public  boolean validation(){
+
+        if (!(Pattern.matches("[I][0-9]{3,}",txtStockId.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Id").show();
+            return false;
+        }
+
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getIntPattern()),txtQuantity.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Quantity").show();
+            return false;
+        }
+
+        return  true;
     }
 }

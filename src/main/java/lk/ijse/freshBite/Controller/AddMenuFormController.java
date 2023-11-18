@@ -15,12 +15,14 @@ import lk.ijse.freshBite.Model.AddMenuModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
 import lk.ijse.freshBite.dto.StockItemDto;
 import lk.ijse.freshBite.dto.tm.MenuTm;
+import lk.ijse.freshBite.regex.RegexPattern;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class AddMenuFormController {
 
@@ -162,26 +164,29 @@ public class AddMenuFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        String stockId = String.valueOf(cmbId.getValue());
-        String itemId = txtItemId.getText();
-        String name = txtName.getText();
-        String type = TxtType.getText();
-        int qtyOnhand = Integer.parseInt(txtStock.getText());
-        double price = Double.parseDouble(txtPrice.getText());
-        String status = String.valueOf(cmbStatus.getValue());
+        if (validation()) {
+            String stockId = String.valueOf(cmbId.getValue());
+            String itemId = txtItemId.getText();
+            String name = txtName.getText();
+            String type = TxtType.getText();
+            int qtyOnhand = Integer.parseInt(txtStock.getText());
+            double price = Double.parseDouble(txtPrice.getText());
+            String status = String.valueOf(cmbStatus.getValue());
 
-        var dto = new AddMenuDto(itemId,name,type,qtyOnhand,price,status,stockId,imagePath);
-        try {
-            boolean isAdd = model.addMenu(dto);
-            if (isAdd){
-                new Alert(Alert.AlertType.CONFIRMATION,"Menu Item Add Successful!!").show();
+
+            var dto = new AddMenuDto(itemId, name, type, qtyOnhand, price, status, stockId, imagePath);
+            try {
+                boolean isAdd = model.addMenu(dto);
+                if (isAdd) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Menu Item Add Successful!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            clearFields();
         }
-        clearFields();
 
     }
 
@@ -240,30 +245,32 @@ public class AddMenuFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String itemId = txtItemId.getText();
-        String name = txtName.getText();
-        String type = TxtType.getText();
-        int qtyOnhand = Integer.parseInt(txtStock.getText());
-        double price = Double.parseDouble(txtPrice.getText());
-        String status = String.valueOf(cmbStatus.getValue());
-        String stockId = String.valueOf(cmbId.getValue());
-       Image image = img.getImage();
-       String path = null;
-       if (image!=null){
-           path = image.getUrl();
-       }
-
-
-        var dto = new AddMenuDto(itemId,name,type,qtyOnhand,price,status,stockId,path);
-        try {
-            boolean isUpdate = model.updateMenu(dto);
-            if (isUpdate){
-                new Alert(Alert.AlertType.CONFIRMATION,"Menu Updated!!").show();
+        if (validation()) {
+            String itemId = txtItemId.getText();
+            String name = txtName.getText();
+            String type = TxtType.getText();
+            int qtyOnhand = Integer.parseInt(txtStock.getText());
+            double price = Double.parseDouble(txtPrice.getText());
+            String status = String.valueOf(cmbStatus.getValue());
+            String stockId = String.valueOf(cmbId.getValue());
+            Image image = img.getImage();
+            String path = null;
+            if (image != null) {
+                path = image.getUrl();
             }
-        } catch (SQLException e) {
-           new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+
+
+            var dto = new AddMenuDto(itemId, name, type, qtyOnhand, price, status, stockId, path);
+            try {
+                boolean isUpdate = model.updateMenu(dto);
+                if (isUpdate) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Menu Updated!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+            clearFields();
         }
-        clearFields();
 
     }
     private void clearFields(){
@@ -287,5 +294,25 @@ public class AddMenuFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public boolean validation(){
+        if (!(Pattern.matches("[M][0-9]{3,}",txtItemId.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Id").show();
+            return false;
+
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getNamePattern()),txtName.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid name").show();
+            return  false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getDoublePattern()),txtPrice.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid  ").show();
+            return  false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getIntPattern()),txtStock.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid ").show();
+            return false;
+        }
+        return true;
     }
 }

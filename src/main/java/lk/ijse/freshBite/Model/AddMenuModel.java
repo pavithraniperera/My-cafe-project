@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import lk.ijse.freshBite.db.DbConnection;
 import lk.ijse.freshBite.dto.AddMenuDto;
 import lk.ijse.freshBite.dto.StockItemDto;
+import lk.ijse.freshBite.dto.tm.ItemCardTm;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -119,5 +120,24 @@ public class AddMenuModel {
          dto = new StockItemDto(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(4));
      }
       return  dto;
+    }
+
+    public boolean updateItem(List<ItemCardTm> cartTmList) throws SQLException {
+        for (ItemCardTm item : cartTmList){
+            if (!updateQty(item.getItemName(),item.getQty())){
+                return  false;
+            }
+        }
+        return  true;
+    }
+
+    private boolean updateQty(String itemName, int qty) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql ="UPDATE menu_item SET qty_on_hand =qty_on_hand -? WHERE name=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,qty);
+        preparedStatement.setString(2,itemName);
+        return preparedStatement.executeUpdate()>0;
+
     }
 }

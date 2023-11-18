@@ -17,12 +17,14 @@ import javafx.scene.layout.GridPane;
 import lk.ijse.freshBite.Model.CustomerDetailModel;
 import lk.ijse.freshBite.dto.CustomerDetailDto;
 import lk.ijse.freshBite.dto.tm.CustomerTm;
+import lk.ijse.freshBite.regex.RegexPattern;
 
 import java.awt.*;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class CustomerDetailFormController {
     public Label lblMembership;
@@ -41,7 +43,7 @@ public class CustomerDetailFormController {
                 "None"
         );
         ComBoxMemebership.setItems(oblist);
-
+        generateNextCustomerId();
 
 
 
@@ -85,6 +87,7 @@ public class CustomerDetailFormController {
     private CustomerDetailModel model = new CustomerDetailModel();
     Map<String, Double> newDiscounts = new HashMap<>();
 
+
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearFields();
@@ -105,48 +108,50 @@ public class CustomerDetailFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String id = txtCustId.getText();
-        String  name = txtName.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        String tele = txtTelephone.getText();
-        String gender = handleRadioBtn();
-        String membership = handleComboBox();
-       // lblMembership.setText(membership);
-        var customerDetailDto  = new CustomerDetailDto(id,name,address,tele,email,gender,membership);
-        try {
-            boolean isSaved = model.saveCustomer(customerDetailDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
+        if (validation()) {
+            String id = txtCustId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            String tele = txtTelephone.getText();
+            String gender = handleRadioBtn();
+            String membership = handleComboBox();
+            // lblMembership.setText(membership);
+            var customerDetailDto = new CustomerDetailDto(id, name, address, tele, email, gender, membership);
+            try {
+                boolean isSaved = model.saveCustomer(customerDetailDto);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Customer Saved Successfully").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            clearFields();
         }
-        clearFields();
-
 
     }
 
     @FXML
     void btnUpdateONAction(ActionEvent event) {
-        String id = txtCustId.getText();
-        String  name = txtName.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        String tele = txtTelephone.getText();
-        String gender = handleRadioBtn();
-        String membership = handleComboBox();
-        var customerDetailDto  = new CustomerDetailDto(id,name,address,tele,email,gender,membership);
-        try {
-            boolean isUpdated = model.updateCustomer(customerDetailDto);
-            if (isUpdated){
-                new Alert(Alert.AlertType.CONFIRMATION,"Customer updated!!").show();
+        if (validation()) {
+            String id = txtCustId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            String tele = txtTelephone.getText();
+            String gender = handleRadioBtn();
+            String membership = handleComboBox();
+            var customerDetailDto = new CustomerDetailDto(id, name, address, tele, email, gender, membership);
+            try {
+                boolean isUpdated = model.updateCustomer(customerDetailDto);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Customer updated!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-           new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            clearFields();
         }
-        clearFields();
-
     }
     private String handleRadioBtn (){
         RadioButton selectedBtn = (RadioButton) genderGrp.getSelectedToggle();
@@ -262,5 +267,37 @@ public class CustomerDetailFormController {
             // Handle the result if needed
         });
 
+    }
+    public boolean validation(){
+        if (!(Pattern.matches("[C][0-9]{3,}",txtCustId.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Id").show();
+            return false;
+        }
+        if (!(Pattern.matches("[A-Za-z]{2,}[^!@%* .]",txtName.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid name").show();
+            return false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getEmailPattern()),txtEmail.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Email").show();
+            return false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getCityPattern()),txtAddress.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid address").show();
+            return false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getMobilePattern()),txtTelephone.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Phone_no").show();
+            return false;
+        }
+        return  true;
+
+    }
+    public void generateNextCustomerId(){
+        try {
+            String nextId = model.generateCustomerId();
+            txtCustId.setText(nextId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

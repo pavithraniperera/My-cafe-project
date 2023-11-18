@@ -13,9 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.freshBite.Model.SupplierModel;
 import lk.ijse.freshBite.dto.SupplierDto;
 import lk.ijse.freshBite.dto.tm.SupplierTm;
+import lk.ijse.freshBite.regex.RegexPattern;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class SupplierFormController {
 
@@ -109,29 +111,30 @@ public class SupplierFormController {
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
-        SupplierDto dto = null;
-        String sup_id = txtSupplierId.getText();
-        String name = txtName.getText();
-        String  address = txtAddress.getText();
-        String Email = txtEmail.getText();
-        String telephone = txtTelephone.getText();
-        if(sup_id!= null) {
-             dto = new SupplierDto(sup_id, name, address, Email, telephone);
-        }
-        else{
-            new Alert(Alert.AlertType.ERROR,"Please enter the required information");
-        }
-        try {
-            if(dto!=null) {
-                boolean isSave = supplierModel.addSupplier(dto);
-                if (isSave) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!!").show();
-                    clear();
-                }
+        if (validation()) {
+            SupplierDto dto = null;
+            String sup_id = txtSupplierId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String Email = txtEmail.getText();
+            String telephone = txtTelephone.getText();
+            if (sup_id != null) {
+                dto = new SupplierDto(sup_id, name, address, Email, telephone);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Please enter the required information");
             }
-        } catch (SQLException e) {
+            try {
+                if (dto != null) {
+                    boolean isSave = supplierModel.addSupplier(dto);
+                    if (isSave) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!!").show();
+                        clear();
+                    }
+                }
+            } catch (SQLException e) {
 
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
 
 
@@ -145,19 +148,21 @@ public class SupplierFormController {
     }
 
     public void btnUpdateSupplierOnAction(ActionEvent actionEvent) {
-        String sup_id = txtSupplierId.getText();
-        String name = txtName.getText();
-        String Address = txtAddress.getText();
-        String telephone = txtTelephone.getText();
-        String email = txtEmail.getText();
-        try {
-            boolean isUpdated = supplierModel.updateSupplier(new SupplierDto(sup_id,name,Address,telephone,email));
-            if(isUpdated){
-                new Alert(Alert.AlertType.CONFIRMATION,"Supplier data updated!!").show();
-            }
+        if (validation()) {
+            String sup_id = txtSupplierId.getText();
+            String name = txtName.getText();
+            String Address = txtAddress.getText();
+            String telephone = txtTelephone.getText();
+            String email = txtEmail.getText();
+            try {
+                boolean isUpdated = supplierModel.updateSupplier(new SupplierDto(sup_id, name, Address, telephone, email));
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier data updated!!").show();
+                }
 
-        } catch (SQLException e) {
-           new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
 
     }
@@ -177,6 +182,30 @@ public class SupplierFormController {
 
     public void btnClearOnAction(ActionEvent actionEvent) {
         clear();
+
+    }
+    public boolean validation(){
+        if (!(Pattern.matches("[S][0-9]{3,}",txtSupplierId.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Id").show();
+            return false;
+        }
+        if (!(Pattern.matches("[A-Za-z]{2,}[^!@%* .]",txtName.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid name").show();
+            return false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getEmailPattern()),txtEmail.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Email").show();
+            return false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getCityPattern()),txtAddress.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid address").show();
+            return false;
+        }
+        if (!(Pattern.matches(String.valueOf(RegexPattern.getMobilePattern()),txtTelephone.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Phone_no").show();
+            return false;
+        }
+        return  true;
 
     }
 }

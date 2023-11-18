@@ -17,11 +17,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import lk.ijse.freshBite.Model.MenueItemModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
+import lk.ijse.freshBite.dto.MenuItemDto;
 import lk.ijse.freshBite.dto.tm.ItemCardTm;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -105,6 +107,7 @@ public class MenuItemFormController {
      menuDisplay();
      loadCustId();
      displayDate();
+     generateNextOrderId();
 
 
     }
@@ -129,6 +132,24 @@ public class MenuItemFormController {
 
     @FXML
     void btnPayOnAction(ActionEvent event) {
+        String orderId = lblOrderId.getText();
+        LocalDate date = LocalDate.parse(lblDate.getText());
+        String cust_id = combCustId.getValue();
+        double total = Double.parseDouble(lblNetTotalValue.getText());
+        List<ItemCardTm> itemList = new ArrayList<>();
+        for (ItemCardTm item : cartItems){
+            itemList.add(item);
+        }
+       // System.out.println("Place order form controller: " + itemList);
+        var dto = new MenuItemDto(orderId,date,cust_id,total,itemList);
+        try {
+            boolean isSuccess = model.placeOrder(dto);
+            if (isSuccess){
+                new Alert(Alert.AlertType.CONFIRMATION,"Orders Save Successfully").show();;
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
 
     }
 
@@ -139,6 +160,8 @@ public class MenuItemFormController {
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {
+        tableAddCart.getItems().clear();
+        combCustId.setValue(null);
 
     }
 
@@ -217,6 +240,12 @@ public class MenuItemFormController {
         pane2.getChildren().setAll(fxml);
     }
     private void generateNextOrderId(){
+        try {
+            String orderId = model.genarateId();
+            lblOrderId.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
     public void setTableValue(AddMenuDto dto, int qty){
@@ -315,6 +344,7 @@ public class MenuItemFormController {
         float netTotal = (float) (total-discount);
         lblNetTotalValue.setText(String.valueOf(netTotal));
     }
+
 
 
 }

@@ -124,4 +124,29 @@ public class StockItemModel {
         return stockItems;
 
     }
+
+    public String getNextStockId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT stock_id FROM stock_item ORDER BY stock_id DESC LIMIT 1";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return  generateNextId(resultSet.getString(1));
+        }
+        return  generateNextId(null);
+
+    }
+
+    private String generateNextId(String currentID) {
+        if (currentID!=null){
+            String numericPart = currentID.substring(1);
+            int numericValue = Integer.parseInt(numericPart);
+            numericValue++;
+            String nextStockId = String.format("I%03d", numericValue);
+            return nextStockId;
+        }
+        else {
+            return "I001";
+        }
+    }
 }

@@ -67,4 +67,28 @@ public class CustomerDetailModel {
       }
       return  dtoList;
     }
+
+    public String generateCustomerId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return getNextId(  resultSet.getString(1));
+        }
+        return getNextId(null);
+    }
+
+    private String getNextId(String currentId) {
+        if (currentId!= null){
+            String numericPart = currentId.substring(1);
+            int numericValue = Integer.parseInt(numericPart);
+            numericValue++;
+            String nextStockId = String.format("C%03d", numericValue);
+            return nextStockId;
+        }
+        else {
+            return "C001";
+        }
+    }
 }
