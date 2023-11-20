@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,5 +91,55 @@ public class CustomerDetailModel {
         else {
             return "C001";
         }
+    }
+
+    public List<String> loadCustomerId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT customer_id FROM customers";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<String> list = new ArrayList<>();
+        while (resultSet.next()){
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
+    public String getTelephone(String custId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT phone_no FROM customers WHERE customer_id=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql) ;
+        preparedStatement.setString(1,custId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        String tele = null;
+        while(resultSet.next()){
+            tele = resultSet.getString(1);
+        }
+        return  tele;
+    }
+
+    public String getName(String custId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT name FROM customers WHERE customer_id=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql) ;
+        preparedStatement.setString(1,custId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        String name = null;
+        while(resultSet.next()){
+            name = resultSet.getString(1);
+        }
+        return  name;
+    }
+
+    public int getCustomerCount() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT count(*) AS avgCustomers FROM customers ";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int totalCustomers = -1;
+        while (resultSet.next()){
+            totalCustomers = resultSet.getInt(1);
+        }
+        return  totalCustomers;
     }
 }

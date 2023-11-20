@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Bill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f74a28f4-3672-4f4e-af8e-2b401c13b2b5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="customerId" class="java.lang.String"/>
+	<parameter name="Total" class="java.lang.String"/>
+	<parameter name="discount" class="java.lang.String"/>
+	<parameter name="netTotal" class="java.lang.String"/>
+	<parameter name="orderId" class="java.lang.String"/>
+
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="itemName" class="java.lang.String"/>
+	<field name="qty" class="java.lang.Integer"/>
+	<field name="price" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="30" width="189" height="30" uuid="83bc4531-fc0b-4fdd-90d3-28955e9653ce"/>
+				<textElement textAlignment="Left">
+					<font fontName="Dyuthi" size="22" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[FreshBite Cafe]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="0" width="100" height="30" uuid="dfc1eeee-2070-4557-a1ff-240648f7abfe"/>
+				<textFieldExpression><![CDATA[$P{customerId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-3" y="5" width="100" height="30" uuid="06b3a48a-2bb5-4bab-a4bc-419d6b903e84"/>
+				<textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="460" y="0" width="100" height="15" uuid="148dfd20-0d79-43db-8657-399784b768c5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="460" y="20" width="100" height="20" uuid="1453ea69-ceed-46a2-9baa-38bec8f90e6e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-25" y="49" width="595" height="1" uuid="6db73969-b22c-4a73-bf37-d38a4951a149"/>
+				<graphicElement>
+					<pen lineWidth="0.8" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="-11" y="0" width="100" height="30" uuid="040fe4d5-b590-464a-9c6b-664b39d46b13">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d5481442-1896-4e5e-b4cd-ffa7e685706a"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Bitstream Charter" size="14"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="100" height="30" uuid="72bb8c9b-8e80-4dfd-91cf-bb8fb924a66a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f8788a1f-1c6a-4656-bf4d-960edcad7d9d"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Abyssinica SIL" size="14"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="30" uuid="1ac7983f-eb03-417d-b6be-95586696862e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a2e878bc-405d-4c3a-b9f1-fb07b18dc1b1"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Abyssinica SIL" size="14"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="-11" y="0" width="100" height="20" uuid="868fdf28-ce2a-4faa-a889-9400c80f6639">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d5481442-1896-4e5e-b4cd-ffa7e685706a"/>
+				</reportElement>
+				<textElement>
+					<font fontName="aakar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="100" height="20" uuid="5ffed935-c71a-437f-abb1-a8bd07921b69">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f8788a1f-1c6a-4656-bf4d-960edcad7d9d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="100" height="20" uuid="d2b1b36a-aed6-405e-8868-10f2738de005">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a2e878bc-405d-4c3a-b9f1-fb07b18dc1b1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-25" y="20" width="595" height="1" uuid="0a344de3-8b9f-4185-88c1-c0826971226f"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="83" splitType="Stretch">
+			<textField>
+				<reportElement x="350" y="10" width="100" height="30" uuid="00e7deb5-9d32-4bd9-b6dd-c61c3c395ab7"/>
+				<textElement>
+					<font fontName="Gurajada" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="30" width="100" height="30" uuid="a0ba6009-8983-4c85-823c-fb4d0d19c6ac"/>
+				<textElement>
+					<font fontName="Gurajada" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="60" width="100" height="19" uuid="568b4a40-dd1a-4b59-9976-5e6ae93c9c3a"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{netTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="17" width="100" height="16" uuid="6f0b0c13-fe73-48e1-8ba4-42705e883a69"/>
+				<textElement>
+					<font fontName="aakar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="33" width="100" height="25" uuid="f933a37f-61d2-422b-b162-59c9c55392a4"/>
+				<textElement>
+					<font fontName="aakar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discount :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="60" width="100" height="20" uuid="6daa3ead-0e7c-4d3b-8a72-b1233614f70a"/>
+				<textElement>
+					<font fontName="aakar" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Total :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="9" width="595" height="1" uuid="28755103-a826-4988-998e-a511d451682a"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="99" y="70" width="446" height="30" uuid="c5195bd3-8ee7-48fc-8fa0-035f58c6b3cd"/>
+				<textElement>
+					<font fontName="FreeMono" size="20" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Thank you !!! . Come again... ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-3" y="20" width="260" height="20" uuid="ef2506fa-5c45-4de0-aff2-0440bb7f5e6d"/>
+				<textElement>
+					<font fontName="Bitstream Charter" size="12"/>
+				</textElement>
+				<text><![CDATA[Contact Us : 0778967456/031-3445670]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="20" width="280" height="30" uuid="02b57561-16b1-462d-a129-b055d74502cd"/>
+				<textElement>
+					<font fontName="Abyssinica SIL" size="12"/>
+				</textElement>
+				<text><![CDATA[FreshBite Cafe ,Negombo Road , Negombo.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="70" splitType="Stretch"/>
+	</summary>
+</jasperReport>

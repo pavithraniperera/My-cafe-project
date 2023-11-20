@@ -20,4 +20,30 @@ public class OrderModel {
         preparedStatement.setDouble(5,total);
         return preparedStatement.executeUpdate()>0;
     }
+
+    public int getTotalOrderCount() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT count(*) AS totalOrders FROM orders WHERE date = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, String.valueOf(LocalDate.now()));
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int totalOrders = -1;
+        while (resultSet.next()){
+            totalOrders = resultSet.getInt(1);
+        }
+        return  totalOrders;
+    }
+
+    public double getTotalPriceOfToday() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT total_price FROM orders WHERE date = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, String.valueOf(LocalDate.now()));
+        ResultSet resultSet = preparedStatement.executeQuery();
+        double price = -1;
+        while (resultSet.next()){
+            price+= resultSet.getDouble(1);
+        }
+        return  price;
+    }
 }

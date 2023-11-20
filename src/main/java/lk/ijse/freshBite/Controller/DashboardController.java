@@ -3,6 +3,8 @@ package lk.ijse.freshBite.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,22 +12,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.freshBite.Model.CustomerDetailModel;
+import lk.ijse.freshBite.Model.OrderModel;
+import lk.ijse.freshBite.Model.ReservationModel;
+import lk.ijse.freshBite.dto.ReservationDto;
+import lk.ijse.freshBite.dto.tm.DashbordTm;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
+import java.util.*;
 
 public class DashboardController  implements Initializable {
 
@@ -34,6 +38,13 @@ public class DashboardController  implements Initializable {
     public ImageView menuAfterClicked;
     public ImageView imgMenuItem;
     public AnchorPane root;
+    public Label lblRevenue;
+    public Label lblorders;
+    public Label lblCustomer;
+    public TableView tableReservationList;
+    public TableColumn colTime;
+    public TableColumn colCustId;
+    public TableColumn colTablNo;
     @FXML
     private JFXButton btnAnalytics;
 
@@ -93,9 +104,75 @@ public class DashboardController  implements Initializable {
 
     @FXML
     private ImageView imgStock;
+    private OrderModel orderModel = new OrderModel();
+    private CustomerDetailModel customerDetailModel = new CustomerDetailModel();
+    private ReservationModel reservationModel = new ReservationModel();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setOrder();
+        setRevenue();
+        setCustomers();
+        setCellValueFactory();
+        loadTableReservations();
+
+    }
+
+    private void setCellValueFactory() {
+       colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+       colTablNo.setCellValueFactory(new PropertyValueFactory<>("table_no"));
+       colCustId.setCellValueFactory(new PropertyValueFactory<>("custId"));
+    }
+
+    private void loadTableReservations() {
+        ObservableList<DashbordTm> obList = FXCollections.observableArrayList();
+        try {
+            List<ReservationDto> dtoList = reservationModel.getTodayReservations();
+            System.out.println(dtoList);
+            for (ReservationDto dto :dtoList){
+                obList.add(new DashbordTm(dto.getTime(), dto.getTableNo(), dto.getCustId()));
+            }
+            tableReservationList.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void setCustomers() {
+        try {
+            int AvgCustomers = customerDetailModel.getCustomerCount();
+            if (AvgCustomers!=(-1)){
+                lblCustomer.setText(String.valueOf(AvgCustomers));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setRevenue() {
+        try {
+            double price = orderModel.getTotalPriceOfToday();
+            if (price!=(-1)){
+                lblRevenue.setText(String.valueOf(price));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    private void setOrder() {
+        try {
+            int totalOrders = orderModel.getTotalOrderCount();
+            if (totalOrders!=(-1)){
+                lblorders.setText(String.valueOf(totalOrders));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

@@ -53,5 +53,5 @@
 .table-row-cell {
     -fx-background-color: rgba(246, 229, 205, 0.4746);
     -fx-border-color: #F8E2A9;
-    -fx-border-width: 3px;
+    -fx-border-width: 1px;
 }

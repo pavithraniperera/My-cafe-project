@@ -19,13 +19,17 @@ import lk.ijse.freshBite.Model.MenueItemModel;
 import lk.ijse.freshBite.dto.AddMenuDto;
 import lk.ijse.freshBite.dto.MenuItemDto;
 import lk.ijse.freshBite.dto.tm.ItemCardTm;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class MenuItemFormController {
 
@@ -154,7 +158,28 @@ public class MenuItemFormController {
     }
 
     @FXML
-    void btnReciptOnAction(ActionEvent event) {
+    void btnReciptOnAction(ActionEvent event) throws JRException {
+        // Prepare data for the report
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(cartItems);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("Total", lblTotalValue.getText());
+        parameters.put("discount", lblDiscountValue.getText());
+        parameters.put("netTotal", lblNetTotalValue.getText());
+        parameters.put("customerId",combCustId.getValue());
+        parameters.put("orderId",lblOrderId.getText());
+        parameters.put("logo","/image/logo.png");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/reports/Bill.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport compileReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        compileReport,
+                        parameters,
+                        dataSource
+                );
+        JasperViewer.viewReport(jasperPrint, false);
+
+
 
     }
 

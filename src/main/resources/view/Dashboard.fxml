@@ -135,9 +135,14 @@
                         <Font size="28.0" />
                      </font>
                   </Text>
-                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="Rs.0.00">
+                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="100.0" text="Rs.">
                      <font>
-                        <Font name="DejaVu Sans Bold" size="55.0" />
+                        <Font name="DejaVu Sans Bold" size="45.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblRevenue" layoutX="198.0" layoutY="72.0" prefHeight="67.0" prefWidth="225.0" text="0.00">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="45.0" />
                      </font>
                   </Label>
                </children>
@@ -154,7 +159,7 @@
                         <Font size="28.0" />
                      </font>
                   </Text>
-                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="0">
+                  <Label fx:id="lblorders" layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="0">
                      <font>
                         <Font name="DejaVu Sans Bold" size="55.0" />
                      </font>
@@ -173,7 +178,7 @@
                         <Font size="28.0" />
                      </font>
                   </Text>
-                  <Label layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="0">
+                  <Label fx:id="lblCustomer" layoutX="114.0" layoutY="72.0" prefHeight="67.0" prefWidth="232.0" text="0">
                      <font>
                         <Font name="DejaVu Sans Bold" size="55.0" />
                      </font>
@@ -199,11 +204,11 @@
                         <Font size="28.0" />
                      </font>
                   </Text>
-                  <TableView layoutX="74.0" layoutY="101.0" prefHeight="417.0" prefWidth="344.0" stylesheets="@../style/Dashboard.css">
+                  <TableView fx:id="tableReservationList" layoutX="74.0" layoutY="101.0" prefHeight="417.0" prefWidth="344.0" stylesheets="@../style/Dashboard.css">
                     <columns>
-                      <TableColumn prefWidth="91.0" text="Time" />
-                      <TableColumn prefWidth="131.0" text="Table_no" />
-                        <TableColumn prefWidth="121.0" text="Cust_id" />
+                      <TableColumn fx:id="colTime" prefWidth="91.0" text="Time" />
+                      <TableColumn fx:id="colTablNo" prefWidth="131.0" text="Table_no" />
+                        <TableColumn fx:id="colCustId" prefWidth="121.0" text="Cust_id" />
                     </columns>
                      <styleClass>
                         <String fx:value="table-row-cell" />
