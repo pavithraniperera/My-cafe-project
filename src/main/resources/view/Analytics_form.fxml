@@ -1,16 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="1052.0" prefWidth="1788.0" styleClass="anchor-pane-with-background" stylesheets="@../style/Analytics.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.AnalyticsFormController">
+<AnchorPane prefHeight="1052.0" prefWidth="1788.0" stylesheets="@../style/Analytics.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.AnalyticsFormController">
    <children>
       <ImageView fitHeight="114.0" fitWidth="148.0" layoutX="1614.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Analytics%20icon.png" />
          </image>
       </ImageView>
+      <AnchorPane layoutX="68.0" layoutY="56.0" prefHeight="414.0" prefWidth="960.0" styleClass="anchor-pane-with-border" stylesheets="@../style/Analytics.css">
+         <children>
+            <Label layoutX="46.0" layoutY="32.0" prefHeight="46.0" prefWidth="290.0" text="Expencess Chart" textFill="#976565">
+               <font>
+                  <Font name="DejaVu Sans Mono Bold" size="20.0" />
+               </font>
+            </Label>
+            <AreaChart layoutX="59.0" layoutY="94.0" prefHeight="286.0" prefWidth="795.0" styleClass="chart-series-area-line" stylesheets="@../style/Analytics.css">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="68.0" layoutY="519.0" prefHeight="387.0" prefWidth="960.0" styleClass="anchor-pane-with-border" stylesheets="@../style/Analytics.css">
+         <children>
+            <Label layoutX="43.0" layoutY="25.0" prefHeight="46.0" prefWidth="290.0" text="New Customer static" textFill="#976565">
+               <font>
+                  <Font name="DejaVu Sans Mono Bold" size="20.0" />
+               </font>
+            </Label>
+            <BarChart layoutX="56.0" layoutY="83.0" prefHeight="284.0" prefWidth="805.0" styleClass="chart-series-area-line" stylesheets="@../style/Analytics.css">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1122.0" layoutY="53.0" prefHeight="620.0" prefWidth="480.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Analytics.css">
+         <children>
+            <TableView layoutX="36.0" layoutY="116.0" prefHeight="445.0" prefWidth="402.0" stylesheets="@../style/Analytics.css">
+              <columns>
+                <TableColumn prefWidth="141.0" />
+                <TableColumn prefWidth="141.0" text="Name" />
+                  <TableColumn prefWidth="119.0" text="Total Orders" />
+              </columns>
+               <styleClass>
+                  <String fx:value="table-view" />
+                  <String fx:value="table-row-cell" />
+               </styleClass>
+            </TableView>
+            <Label layoutX="105.0" layoutY="22.0" prefHeight="46.0" prefWidth="290.0" text="Trending Items" textFill="#976565">
+               <font>
+                  <Font name="KacstDecorative" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <SplitPane dividerPositions="0.3" layoutX="1068.0" layoutY="48.0" prefHeight="952.0" prefWidth="3.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+        </items>
+      </SplitPane>
+      <JFXButton layoutX="1205.0" layoutY="782.0" prefHeight="64.0" prefWidth="338.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button-with-gradient" stylesheets="@../style/Analytics.css" text="Sales Report">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-statistics-report-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="22.0" />
+         </font>
+      </JFXButton>
+      <SplitPane dividerPositions="0.96" layoutX="80.0" layoutY="488.0" orientation="VERTICAL" prefHeight="2.0" prefWidth="989.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

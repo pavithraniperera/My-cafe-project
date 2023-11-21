@@ -12,17 +12,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.freshBite.Model.CustomerDetailModel;
 import lk.ijse.freshBite.Model.OrderModel;
 import lk.ijse.freshBite.Model.ReservationModel;
+import lk.ijse.freshBite.dto.IncomeDto;
 import lk.ijse.freshBite.dto.ReservationDto;
 import lk.ijse.freshBite.dto.tm.DashbordTm;
 
@@ -45,6 +50,8 @@ public class DashboardController  implements Initializable {
     public TableColumn colTime;
     public TableColumn colCustId;
     public TableColumn colTablNo;
+    @FXML
+    private LineChart<?, ?> chartRevenue;
     @FXML
     private JFXButton btnAnalytics;
 
@@ -116,6 +123,36 @@ public class DashboardController  implements Initializable {
         setCustomers();
         setCellValueFactory();
         loadTableReservations();
+        loadIncome();
+
+    }
+
+    private void loadIncome() {
+        try {
+            List<IncomeDto> list = orderModel.getIncomeDetails();
+            if (!list.isEmpty()){
+                setupLineChart(list);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void setupLineChart(List<IncomeDto> list) {
+        chartRevenue.getData().clear();
+        // Create a new series for the line chart
+        XYChart.Series series = new XYChart.Series();
+        // Populate the series with data from the incomeList
+        for (IncomeDto incomeDto : list) {
+            series.getData().add(new XYChart.Data<>(incomeDto.getOrderDate(), incomeDto.getDailyIncome()));
+            Line line = new Line();
+            line.setStroke(Color.rgb(234, 9, 9));
+            series.setNode(line);
+        }
+        // Add the series to the line chart
+        chartRevenue.getData().add(series);
 
     }
 
@@ -134,6 +171,7 @@ public class DashboardController  implements Initializable {
                 obList.add(new DashbordTm(dto.getTime(), dto.getTableNo(), dto.getCustId()));
             }
             tableReservationList.setItems(obList);
+            tableReservationList.refresh();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -160,7 +198,6 @@ public class DashboardController  implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
@@ -403,8 +440,6 @@ public class DashboardController  implements Initializable {
 
         }
 
-
-
     }
 
     public void logOutClicked(MouseEvent mouseEvent) throws IOException {
@@ -426,7 +461,6 @@ public class DashboardController  implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Login form");
             stage.centerOnScreen();
-
 
         }
 

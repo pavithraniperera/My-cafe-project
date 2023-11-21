@@ -1,11 +1,15 @@
 package lk.ijse.freshBite.Model;
 
 import lk.ijse.freshBite.db.DbConnection;
+import lk.ijse.freshBite.dto.IncomeDto;
+import lk.ijse.freshBite.dto.tm.ItemCardTm;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class OrderModel {
 
@@ -45,5 +49,17 @@ public class OrderModel {
             price+= resultSet.getDouble(1);
         }
         return  price;
+    }
+
+    public List<IncomeDto> getIncomeDetails() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT DATE(date) AS order_date, SUM(total_price) AS daily_income FROM orders GROUP BY DATE(date) ORDER BY TIMESTAMP(order_date)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<IncomeDto> list = new ArrayList<>();
+        while (resultSet.next()){
+            list.add(new IncomeDto(resultSet.getString(1),resultSet.getDouble(2)));
+        }
+        return list;
     }
 }

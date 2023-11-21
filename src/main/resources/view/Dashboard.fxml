@@ -3,8 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -187,14 +187,19 @@
             </AnchorPane>
             <AnchorPane layoutX="106.0" layoutY="304.0" prefHeight="566.0" prefWidth="954.0" style="-fx-border-color: DEC8A9; -fx-border-width: 2;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
                <children>
-                  <AreaChart layoutX="50.0" layoutY="48.0" legendSide="TOP" prefHeight="482.0" prefWidth="838.0" styleClass="chart-series-area-line" stylesheets="@../style/Dashboard.css" title="Revenue Chart">
+                  <LineChart fx:id="chartRevenue" layoutX="88.0" layoutY="89.0" prefHeight="417.0" prefWidth="793.0" styleClass="chart-series-area-line" stylesheets="@../style/Dashboard.css" title="REVENUE CHART">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />
                     </yAxis>
-                  </AreaChart>
+                  </LineChart>
+                  <Text fill="#cdabab" layoutX="70.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revenue chart" wrappingWidth="248.7294921875">
+                     <font>
+                        <Font name="DejaVu Sans Mono Bold" size="23.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="1192.0" layoutY="296.0" prefHeight="572.0" prefWidth="484.0" style="-fx-border-color: D9AF70; -fx-border-width: 1;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Dashboard.css">
