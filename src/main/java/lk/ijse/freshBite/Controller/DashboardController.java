@@ -147,9 +147,7 @@ public class DashboardController  implements Initializable {
         // Populate the series with data from the incomeList
         for (IncomeDto incomeDto : list) {
             series.getData().add(new XYChart.Data<>(incomeDto.getOrderDate(), incomeDto.getDailyIncome()));
-            Line line = new Line();
-            line.setStroke(Color.rgb(234, 9, 9));
-            series.setNode(line);
+
         }
         // Add the series to the line chart
         chartRevenue.getData().add(series);

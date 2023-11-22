@@ -45,4 +45,24 @@ public class OrderItemModel {
         }
         return  null;
     }
+
+    public int getSoldUnits() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT\n" +
+                "    DATE(order_time) AS order_date,\n" +
+                "    SUM(quantity) AS total_quantity_day\n" +
+                "FROM order_item\n" +
+                "JOIN orders\n" +
+                "ON order_item.order_id = orders.order_id\n" +
+                "GROUP BY DATE(order_time)\n" +
+                "ORDER BY order_date;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int units = -1;
+        while (resultSet.next()){
+            units = resultSet.getInt(2);
+        }
+        return  units;
+    }
 }

@@ -1,6 +1,7 @@
 package lk.ijse.freshBite.Model;
 
 import lk.ijse.freshBite.db.DbConnection;
+import lk.ijse.freshBite.dto.AnalyticsDto;
 import lk.ijse.freshBite.dto.CustomerDetailDto;
 import lk.ijse.freshBite.dto.tm.StaffTm;
 
@@ -141,5 +142,20 @@ public class CustomerDetailModel {
             totalCustomers = resultSet.getInt(1);
         }
         return  totalCustomers;
+    }
+
+    public List<AnalyticsDto> getCustomerLocationData() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT address, COUNT(DISTINCT customer_id) AS customer_count\n" +
+                "FROM customers\n" +
+                "GROUP BY address\n" +
+                "ORDER BY customer_count DESC";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<AnalyticsDto> list = new ArrayList<>();
+        while (resultSet.next()){
+            list.add(new AnalyticsDto(resultSet.getString(1),resultSet.getInt(2)));
+        }
+        return list;
     }
 }

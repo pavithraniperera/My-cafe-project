@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import java.lang.String?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.BarChart?>
@@ -29,7 +30,7 @@
                   <Font name="DejaVu Sans Mono Bold" size="20.0" />
                </font>
             </Label>
-            <AreaChart layoutX="59.0" layoutY="94.0" prefHeight="286.0" prefWidth="795.0" styleClass="chart-series-area-line" stylesheets="@../style/Analytics.css">
+            <AreaChart fx:id="areaChartExpences" layoutX="59.0" layoutY="94.0" prefHeight="286.0" prefWidth="795.0" styleClass="chart-series-area-line" stylesheets="@../style/Analytics.css">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -37,37 +38,45 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </AreaChart>
+            <JFXComboBox fx:id="combPeriod" layoutX="247.0" layoutY="43.0" onAction="#combPeriodOnAction" prefHeight="24.0" prefWidth="177.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="68.0" layoutY="519.0" prefHeight="387.0" prefWidth="960.0" styleClass="anchor-pane-with-border" stylesheets="@../style/Analytics.css">
          <children>
-            <Label layoutX="43.0" layoutY="25.0" prefHeight="46.0" prefWidth="290.0" text="New Customer static" textFill="#976565">
+            <Label layoutX="43.0" layoutY="25.0" prefHeight="46.0" prefWidth="290.0" text="Customer Location Static" textFill="#976565">
                <font>
                   <Font name="DejaVu Sans Mono Bold" size="20.0" />
                </font>
             </Label>
-            <BarChart layoutX="56.0" layoutY="83.0" prefHeight="284.0" prefWidth="805.0" styleClass="chart-series-area-line" stylesheets="@../style/Analytics.css">
+            <BarChart fx:id="barChartCustomer" layoutX="56.0" layoutY="83.0" prefHeight="284.0" prefWidth="805.0" stylesheets="@../style/Analytics.css">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis side="BOTTOM" fx:id="x" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis fx:id="y" side="LEFT" />
               </yAxis>
+               <styleClass>
+                  <String fx:value="chart-series-area-line" />
+                  <String fx:value="chart-bar" />
+               </styleClass>
             </BarChart>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1122.0" layoutY="53.0" prefHeight="620.0" prefWidth="480.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Analytics.css">
          <children>
-            <TableView layoutX="36.0" layoutY="116.0" prefHeight="445.0" prefWidth="402.0" stylesheets="@../style/Analytics.css">
+            <TableView fx:id="tableTrendingItem" layoutX="36.0" layoutY="116.0" prefHeight="445.0" prefWidth="402.0" stylesheets="@../style/Analytics.css">
               <columns>
-                <TableColumn prefWidth="141.0" />
-                <TableColumn prefWidth="141.0" text="Name" />
-                  <TableColumn prefWidth="119.0" text="Total Orders" />
+                <TableColumn fx:id="colImage" prefWidth="141.0" />
+                <TableColumn fx:id="colName" prefWidth="162.0" text="Name" />
+                  <TableColumn fx:id="colTotalOrder" prefWidth="98.0" text="Total Orders" />
               </columns>
                <styleClass>
                   <String fx:value="table-view" />
                   <String fx:value="table-row-cell" />
                </styleClass>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <Label layoutX="105.0" layoutY="22.0" prefHeight="46.0" prefWidth="290.0" text="Trending Items" textFill="#976565">
                <font>
@@ -82,7 +91,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
         </items>
       </SplitPane>
-      <JFXButton layoutX="1205.0" layoutY="782.0" prefHeight="64.0" prefWidth="338.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button-with-gradient" stylesheets="@../style/Analytics.css" text="Sales Report">
+      <JFXButton fx:id="btnSalesReport" layoutX="1205.0" layoutY="782.0" onAction="#btnSalesReportOnAction" prefHeight="64.0" prefWidth="338.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button-with-gradient" stylesheets="@../style/Analytics.css" text="Sales Report">
          <graphic>
             <ImageView fitHeight="44.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

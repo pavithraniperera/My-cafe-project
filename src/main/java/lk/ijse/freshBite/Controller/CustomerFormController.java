@@ -26,6 +26,7 @@ public class CustomerFormController {
     public JFXButton btnAddCustomer;
 
     public AnchorPane pane2;
+    public JFXButton btnSendEmail;
 
     @FXML
     private TableColumn<?, ?> addressCol;
@@ -106,5 +107,12 @@ public class CustomerFormController {
             }
 
         }
+    }
+
+    public void btnSendOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/Mail_form.fxml"));
+        pane2.getChildren().removeAll();
+
+        pane2.getChildren().setAll(fxml);
     }
 }

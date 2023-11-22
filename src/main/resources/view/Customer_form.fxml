@@ -30,7 +30,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="btnAddCustomer" layoutX="1264.0" layoutY="792.0" onAction="#btnAddCustomerOnAction" prefHeight="108.0" prefWidth="328.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="button-with-gradient" stylesheets="@../style/Customer.css" text="Add Customer">
+      <JFXButton fx:id="btnAddCustomer" layoutX="1298.0" layoutY="809.0" onAction="#btnAddCustomerOnAction" prefHeight="86.0" prefWidth="292.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="button-with-gradient" stylesheets="@../style/Customer.css" text="Add Customer">
          <font>
             <Font size="23.0" />
          </font>
@@ -38,6 +38,18 @@
             <ImageView fitHeight="62.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/icons8-add-user-80.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnSendEmail" layoutX="958.0" layoutY="817.0" onAction="#btnSendOnAction" prefHeight="78.0" prefWidth="244.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="button-with-gradient" stylesheets="@../style/Customer.css" text="Send Email">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="62.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-send-50.png" />
                </image>
             </ImageView>
          </graphic>

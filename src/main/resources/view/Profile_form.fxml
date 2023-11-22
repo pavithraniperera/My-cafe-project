@@ -23,32 +23,32 @@
                   <Font name="Timmana Regular" size="46.0" />
                </font>
             </Text>
-            <TextField layoutX="115.0" layoutY="168.0" prefHeight="50.0" prefWidth="479.0" promptText="Name" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
+            <TextField fx:id="txtName" editable="false" layoutX="115.0" layoutY="168.0" prefHeight="50.0" prefWidth="479.0" promptText="Name" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css" text="Kamal Wijerathna">
                <font>
                   <Font name="Tlwg Typewriter Bold" size="35.0" />
                </font>
             </TextField>
-            <TextField layoutX="783.0" layoutY="161.0" prefHeight="79.0" prefWidth="479.0" promptText="Telephone" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
+            <TextField fx:id="txtphone" layoutX="783.0" layoutY="161.0" prefHeight="79.0" prefWidth="479.0" promptText="Telephone" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
                <font>
                   <Font name="Tlwg Typewriter Bold" size="35.0" />
                </font>
             </TextField>
-            <TextField layoutX="114.0" layoutY="277.0" prefHeight="50.0" prefWidth="479.0" promptText="Address" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
+            <TextField fx:id="txtAddress" layoutX="114.0" layoutY="277.0" prefHeight="50.0" prefWidth="479.0" promptText="Address" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
                <font>
                   <Font name="Tlwg Typewriter Bold" size="35.0" />
                </font>
             </TextField>
-            <TextField layoutX="106.0" layoutY="554.0" prefHeight="82.0" prefWidth="843.0" promptText="E-Mail" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
+            <TextField fx:id="txtmail" layoutX="106.0" layoutY="554.0" prefHeight="82.0" prefWidth="843.0" promptText="E-Mail" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
                <font>
                   <Font name="Tlwg Typewriter Bold" size="35.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="781.0" layoutY="269.0" prefHeight="79.0" prefWidth="477.0" promptText="Password" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
+            <PasswordField fx:id="txtPw" layoutX="781.0" layoutY="269.0" prefHeight="79.0" prefWidth="477.0" promptText="Password" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
                <font>
                   <Font size="29.0" />
                </font>
             </PasswordField>
-            <TextField layoutX="112.0" layoutY="399.0" prefHeight="50.0" prefWidth="479.0" promptText="User name" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
+            <TextField fx:id="txtUserName" layoutX="112.0" layoutY="399.0" prefHeight="50.0" prefWidth="479.0" promptText="User name" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="text-field-with-gradient" stylesheets="@../style/Profile.css">
                <font>
                   <Font name="Tlwg Typewriter Bold" size="35.0" />
                </font>
@@ -60,9 +60,9 @@
             <Image url="@../image/Screenshot_from_2023-11-02_11-55-58-removebg-preview.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="235.0" layoutY="810.0" prefHeight="75.0" prefWidth="336.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="button-with-gradient" stylesheets="@../style/Profile.css" text="Update">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="307.0" layoutY="810.0" onAction="#btnUpdateOnAction" prefHeight="86.0" prefWidth="278.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="button-with-gradient" stylesheets="@../style/Profile.css" text="Update">
          <font>
-            <Font size="25.0" />
+            <Font size="18.0" />
          </font>
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
@@ -72,9 +72,9 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnChangePassword" buttonType="RAISED" layoutX="708.0" layoutY="810.0" onAction="#btnChangePasswordOnAction" prefHeight="65.0" prefWidth="422.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="button-with-gradient" stylesheets="@../style/Profile.css" text="Change Password">
+      <JFXButton fx:id="btnChangePassword" buttonType="RAISED" layoutX="796.0" layoutY="810.0" onAction="#btnChangePasswordOnAction" prefHeight="86.0" prefWidth="300.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" styleClass="button-with-gradient" stylesheets="@../style/Profile.css" text="Change Password">
          <font>
-            <Font size="25.0" />
+            <Font size="19.0" />
          </font>
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
@@ -86,7 +86,7 @@
       </JFXButton>
       <ImageView fitHeight="158.0" fitWidth="246.0" layoutX="717.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/icons8-admin-94.png" />
+            <Image url="@../image/icons8-female-user-update-100.png" />
          </image>
       </ImageView>
    </children>
