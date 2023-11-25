@@ -2,6 +2,7 @@ package lk.ijse.freshBite.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -119,6 +120,13 @@ public class StockItemFormController {
                         dto.getDate()));
             }
             tableStockItem.setItems(oblist);
+            oblist.addListener((ListChangeListener<StockItemTm>) change -> {
+                while (change.next()) {
+                    if (change.wasAdded() || change.wasRemoved()) {
+                        tableStockItem.refresh();
+                    }
+                }
+            });
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -147,6 +155,7 @@ public class StockItemFormController {
                 boolean isAdd = model.addItems(dto);
                 if (isAdd) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Item add Successful");
+                    tableStockItem.refresh();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage());
@@ -189,6 +198,7 @@ public class StockItemFormController {
                 boolean isDeleted = model.deleteItem(stock_id);
                 if (isDeleted){
                     new Alert(Alert.AlertType.CONFIRMATION,"Item Deleted Successfully!!");
+                    tableStockItem.refresh();
                 }
             } catch (SQLException e) {
                   new Alert(Alert.AlertType.ERROR,e.getMessage());
@@ -214,6 +224,7 @@ public class StockItemFormController {
 
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Item Information Updated").show();
+                    tableStockItem.refresh();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -260,4 +271,5 @@ public class StockItemFormController {
 
         return  true;
     }
+
 }

@@ -60,9 +60,12 @@
     -fx-background-color: transparent;
     -fx-border-color: #F8E2A9;
     -fx-border-width: 1px;
+    -fx-font-size: 17px;
+    -fx-font-family: 'MathJax_Main', Arial, sans-serif;
 }
 .table-view .column-header {
     -fx-background-color: #F8E2A9;
+    -fx-font-size: 12px;
 }
 
 .chart-series-area-line {

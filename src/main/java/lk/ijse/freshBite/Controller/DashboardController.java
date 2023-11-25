@@ -16,6 +16,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lk.ijse.freshBite.Model.CustomerDetailModel;
 import lk.ijse.freshBite.Model.OrderModel;
@@ -50,6 +52,7 @@ public class DashboardController  implements Initializable {
     public TableColumn colTime;
     public TableColumn colCustId;
     public TableColumn colTablNo;
+    public JFXButton btnCalculater;
     @FXML
     private LineChart<?, ?> chartRevenue;
     @FXML
@@ -124,7 +127,19 @@ public class DashboardController  implements Initializable {
         setCellValueFactory();
         loadTableReservations();
         loadIncome();
+        setImageToBtn();
 
+    }
+
+    private void setImageToBtn() {
+        Image image = new Image("/image/icons8-calculator-24.png"); // Replace with the actual path
+
+        // Create an ImageView with the Image
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+
+        btnCalculater.setGraphic(imageView);
     }
 
     private void loadIncome() {
@@ -464,5 +479,16 @@ public class DashboardController  implements Initializable {
 
     }
 
+    public void btnCalculaterOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Calculater_form.fxml"));
+        Parent root = loader.load();
+        Stage calculatorStage = new Stage();
+        calculatorStage.setScene(new Scene(root));
+        calculatorStage.initStyle(StageStyle.TRANSPARENT);
+        calculatorStage.setResizable(false);
+        calculatorStage.setTitle("calculater");
+        calculatorStage.show();
+
+    }
 }
 

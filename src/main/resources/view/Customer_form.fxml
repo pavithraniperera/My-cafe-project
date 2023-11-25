@@ -17,15 +17,15 @@
       </ImageView>
       <AnchorPane layoutX="118.0" layoutY="109.0" prefHeight="674.0" prefWidth="1524.0">
          <children>
-            <TableView fx:id="tableCustomer" layoutX="105.0" layoutY="57.0" onMouseClicked="#tableOnClicked" prefHeight="596.0" prefWidth="1196.0" styleClass="table-row-cell" stylesheets="@../style/Customer.css">
+            <TableView fx:id="tableCustomer" layoutX="90.0" layoutY="64.0" onMouseClicked="#tableOnClicked" prefHeight="596.0" prefWidth="1405.0" styleClass="table-row-cell" stylesheets="@../style/Customer.css">
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="166.0" text="Cust_id" />
-                  <TableColumn fx:id="nameCol" prefWidth="159.0" text="Name" />
-                  <TableColumn fx:id="addressCol" prefWidth="154.0" text="Address" />
-                  <TableColumn fx:id="emailCol" prefWidth="172.0" text="E mail" />
-                  <TableColumn fx:id="phoneCol" prefWidth="176.0" text="Telephone" />
-                  <TableColumn fx:id="genderCol" prefWidth="171.0" text="M/F" />
-                  <TableColumn fx:id="membershipCol" prefWidth="195.0" text="Membership" />
+                  <TableColumn fx:id="nameCol" prefWidth="190.0" text="Name" />
+                  <TableColumn fx:id="addressCol" prefWidth="236.0" text="Address" />
+                  <TableColumn fx:id="emailCol" prefWidth="242.0" text="E mail" />
+                  <TableColumn fx:id="phoneCol" prefWidth="207.0" text="Telephone" />
+                  <TableColumn fx:id="genderCol" prefWidth="189.0" text="M/F" />
+                  <TableColumn fx:id="membershipCol" prefWidth="173.0" text="Membership" />
               </columns>
             </TableView>
          </children>

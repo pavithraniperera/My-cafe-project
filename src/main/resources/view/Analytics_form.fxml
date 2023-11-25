@@ -27,7 +27,7 @@
          <children>
             <Label layoutX="46.0" layoutY="32.0" prefHeight="46.0" prefWidth="290.0" text="Expencess Chart" textFill="#976565">
                <font>
-                  <Font name="DejaVu Sans Mono Bold" size="20.0" />
+                  <Font name="DejaVu Sans Mono Bold" size="23.0" />
                </font>
             </Label>
             <AreaChart fx:id="areaChartExpences" layoutX="59.0" layoutY="94.0" prefHeight="286.0" prefWidth="795.0" styleClass="chart-series-area-line" stylesheets="@../style/Analytics.css">
@@ -38,14 +38,14 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </AreaChart>
-            <JFXComboBox fx:id="combPeriod" layoutX="247.0" layoutY="43.0" onAction="#combPeriodOnAction" prefHeight="24.0" prefWidth="177.0" />
+            <JFXComboBox fx:id="combPeriod" layoutX="260.0" layoutY="43.0" onAction="#combPeriodOnAction" prefHeight="24.0" prefWidth="177.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="68.0" layoutY="519.0" prefHeight="387.0" prefWidth="960.0" styleClass="anchor-pane-with-border" stylesheets="@../style/Analytics.css">
          <children>
-            <Label layoutX="43.0" layoutY="25.0" prefHeight="46.0" prefWidth="290.0" text="Customer Location Static" textFill="#976565">
+            <Label layoutX="43.0" layoutY="25.0" prefHeight="46.0" prefWidth="371.0" text="Customer Location Static" textFill="#976565">
                <font>
-                  <Font name="DejaVu Sans Mono Bold" size="20.0" />
+                  <Font name="DejaVu Sans Mono Bold" size="22.0" />
                </font>
             </Label>
             <BarChart fx:id="barChartCustomer" layoutX="56.0" layoutY="83.0" prefHeight="284.0" prefWidth="805.0" stylesheets="@../style/Analytics.css">
@@ -62,13 +62,13 @@
             </BarChart>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1122.0" layoutY="53.0" prefHeight="620.0" prefWidth="480.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Analytics.css">
+      <AnchorPane layoutX="1122.0" layoutY="53.0" prefHeight="620.0" prefWidth="486.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="anchor-pane-background-color-1" stylesheets="@../style/Analytics.css">
          <children>
-            <TableView fx:id="tableTrendingItem" layoutX="36.0" layoutY="116.0" prefHeight="445.0" prefWidth="402.0" stylesheets="@../style/Analytics.css">
+            <TableView fx:id="tableTrendingItem" layoutX="36.0" layoutY="116.0" prefHeight="445.0" prefWidth="425.0" stylesheets="@../style/Analytics.css">
               <columns>
-                <TableColumn fx:id="colImage" prefWidth="141.0" />
-                <TableColumn fx:id="colName" prefWidth="162.0" text="Name" />
-                  <TableColumn fx:id="colTotalOrder" prefWidth="98.0" text="Total Orders" />
+                <TableColumn fx:id="colImage" prefWidth="122.0" />
+                <TableColumn fx:id="colName" prefWidth="207.0" text="Name" />
+                  <TableColumn fx:id="colTotalOrder" prefWidth="77.0" text="Total Orders" />
               </columns>
                <styleClass>
                   <String fx:value="table-view" />
@@ -80,7 +80,7 @@
             </TableView>
             <Label layoutX="105.0" layoutY="22.0" prefHeight="46.0" prefWidth="290.0" text="Trending Items" textFill="#976565">
                <font>
-                  <Font name="KacstDecorative" size="23.0" />
+                  <Font name="KacstDecorative" size="27.0" />
                </font>
             </Label>
          </children>

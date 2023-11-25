@@ -38,7 +38,7 @@ public class ForgotPasswordFormController {
             if (dto.getUserName().equals(userName)){
                String pw = txtPwd.getText();
 
-               if(pw.length()==8) {
+               if(pw.length()==8 || validation(pw)) {
                    var dto1 = new ForgotPassworddto(userName, pw);
                    boolean isSet = model.setPassword(dto1);
                    if (isSet) {
@@ -68,6 +68,13 @@ public class ForgotPasswordFormController {
         }
 
 
+    }
+
+    private boolean validation(String pw) {
+        if (!(Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[@#$%^&+=!])(?=\\\\S+$).{8,}$\n",pw))){
+            return  false;
+        }
+        return  true;
     }
 
 }

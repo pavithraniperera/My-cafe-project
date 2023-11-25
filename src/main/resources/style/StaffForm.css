@@ -8,6 +8,7 @@
     -fx-border-color: #FECB87; /* Border color */
     -fx-border-width: 2px; /* Border width */
     -fx-border-radius: 5px; /* Border corner radius (optional) */
+    -fx-font-size: 14px;
 }
 
 .text-field-with-color {
@@ -15,6 +16,7 @@
     -fx-border-color: #DD9F9F; /* Border color */
     -fx-border-width: 2px; /* Border width */
     -fx-text-fill: black;
+    -fx-font-size: 16px;
 }
 .radio-button-background {
     -fx-background-color: rgba(246, 234, 234, 1) ;/* Set your desired background color */

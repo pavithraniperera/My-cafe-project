@@ -14,11 +14,13 @@
 .table-view .column-header {
     -fx-background-color: rgba(236, 211, 176, 0.82);
     -fx-alignment: CENTER-LEFT;
+    -fx-font-size: 14px;
 }
 .table-row-cell {
     -fx-background-color: rgba(246, 229, 205, 0.4746);
     -fx-border-color: #F8E2A9;
     -fx-border-width: 1px;
+    -fx-font-size: 15px;
 
     -fx-alignment: CENTER-CENTER;
 }

@@ -225,6 +225,7 @@ public class ReservationFormController {
                 boolean isSaved =model.saveReservation(dto);
                 if (isSaved){
                     new Alert(Alert.AlertType.INFORMATION,"Reservation saved").show();
+                    tableReservation.refresh();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -257,6 +258,7 @@ public class ReservationFormController {
                 boolean isUpdated =model.updateReservation(dto);
                 if (isUpdated){
                     new Alert(Alert.AlertType.INFORMATION,"Reservation Update").show();
+                    tableReservation.refresh();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

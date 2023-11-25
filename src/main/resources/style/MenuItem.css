@@ -10,12 +10,14 @@
     -fx-background-color: rgba(246, 229, 205, 0.4);
     -fx-border-color: #F8E2A9;
     -fx-border-width: 1px;
+    -fx-font-size: 14px;
 
     -fx-alignment: CENTER-CENTER;
 }
 .table-view .column-header {
     -fx-background-color: rgba(255, 216, 118, 0.9);
     -fx-alignment: CENTER-LEFT;
+    -fx-font-size: 14px;
 }
 .anchor-pane-background-color-1{
     -fx-background-color: rgba(225, 217, 206, 0.33);

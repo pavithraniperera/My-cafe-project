@@ -8,11 +8,14 @@
 }
 .table-view .column-header {
     -fx-background-color: rgba(236, 211, 176, 0.82);
+    -fx-font-size: 14px; /* Set the default font size for the entire table */
 }
 .table-row-cell {
     -fx-background-color: rgba(246, 229, 205, 0.4746);
     -fx-border-color: #F8E2A9;
     -fx-border-width: 1px;
+    -fx-font-size: 16px; /* Set the desired font size */
+
 }
 .button-with-gradient:hover {
     -fx-background-color: linear-gradient(to bottom, rgba(92, 55, 0, 0.9), rgba(255, 196, 118, 1), rgba(255, 196, 118, 0.9));

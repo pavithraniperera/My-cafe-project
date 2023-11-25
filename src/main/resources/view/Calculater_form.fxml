@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="618.0" prefWidth="509.0" style="-fx-border-radius: 30; -fx-background-radius: 30;" styleClass="anchor-pane-with-border" stylesheets="@../style/Calculater.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.CalculaterFormController">
+   <children>
+      <Pane layoutX="17.0" layoutY="67.0" prefHeight="528.0" prefWidth="482.0" styleClass="anchor-pane-background-color" stylesheets="@../style/Calculater.css">
+         <children>
+            <Pane layoutX="15.0" layoutY="14.0" prefHeight="104.0" prefWidth="453.0" styleClass="background-pane" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label fx:id="lblResult" layoutX="27.0" layoutY="23.0" prefHeight="46.0" prefWidth="399.0" text="0.0" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="btn7" layoutX="15.0" layoutY="148.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="7" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn4" layoutX="15.0" layoutY="239.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="4" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn3" layoutX="15.0" layoutY="326.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="3" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btnClear" layoutX="15.0" layoutY="420.0" onMouseClicked="#symbolOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="C" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn8" layoutX="120.0" layoutY="148.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="8" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn9" layoutX="227.0" layoutY="148.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="9" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btnPlus" layoutX="344.0" layoutY="148.0" onMouseClicked="#symbolOnMouseClicked" onMouseDragged="#symbolOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="+" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn5" layoutX="120.0" layoutY="239.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" stylesheets="@../style/Calculater.css" text="5" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn6" layoutX="227.0" layoutY="239.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="6" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btnSubtraction" layoutX="344.0" layoutY="239.0" onMouseClicked="#symbolOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="-" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn2" layoutX="120.0" layoutY="326.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="2" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn1" layoutX="227.0" layoutY="326.0" onMouseClicked="#numberOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="1" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btnMultiple" layoutX="344.0" layoutY="326.0" onMouseClicked="#symbolOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="*" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btn0" layoutX="120.0" layoutY="420.0" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" onMouseClicked="#numberOnMouseClicked" prefHeight="46.0" prefWidth="37.0" text="0" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btnEqual" layoutX="227.0" layoutY="420.0" onMouseClicked="#symbolOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="=" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+            <Pane fx:id="btnDevide" layoutX="344.0" layoutY="420.0" onMouseClicked="#symbolOnMouseClicked" prefHeight="72.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../style/Calculater.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="13.0" prefHeight="46.0" prefWidth="37.0" text="/" textFill="#fcf6f6">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="background-pane" />
+                  <String fx:value="background-pane-with-gradient" />
+               </styleClass>
+            </Pane>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="titlePane" layoutX="27.0" layoutY="14.0" onMouseDragged="#titleOnMouseDragged" onMousePressed="#titleOnMousedPressed">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-calculator-64.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="58.0" layoutY="7.0" prefHeight="24.0" prefWidth="164.0" text="Calculater" textFill="#fff9f9">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgExit" fitHeight="46.0" fitWidth="56.0" layoutX="416.0" onMouseClicked="#imgExitOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Exit%20icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
