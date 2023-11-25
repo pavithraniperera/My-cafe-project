@@ -53,6 +53,7 @@ public class DashboardController  implements Initializable {
     public TableColumn colCustId;
     public TableColumn colTablNo;
     public JFXButton btnCalculater;
+    public JFXButton btnNotification;
     @FXML
     private LineChart<?, ?> chartRevenue;
     @FXML
@@ -128,7 +129,16 @@ public class DashboardController  implements Initializable {
         loadTableReservations();
         loadIncome();
         setImageToBtn();
+        SetNotificationBtn();
 
+    }
+
+    private void SetNotificationBtn() {
+        Image image = new Image("/image/icons8-notification-48 (1).png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        btnNotification.setGraphic(imageView);
     }
 
     private void setImageToBtn() {
@@ -488,6 +498,12 @@ public class DashboardController  implements Initializable {
         calculatorStage.setResizable(false);
         calculatorStage.setTitle("calculater");
         calculatorStage.show();
+
+    }
+
+    public void btnNotificationOnAction(ActionEvent actionEvent) {
+
+
 
     }
 }

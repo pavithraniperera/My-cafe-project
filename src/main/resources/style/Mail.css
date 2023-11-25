@@ -69,3 +69,7 @@
     -fx-border-width: 2px; /* Border width */
     -fx-text-fill: black;
 }
+.text-area {
+    -fx-control-inner-background: #fdebeb;
+    -fx-border-width: 2px;
+}

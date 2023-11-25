@@ -1,5 +1,7 @@
 package lk.ijse.freshBite.email;
 
+import javafx.scene.control.Alert;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -19,7 +21,7 @@ public class SendEmail {
       Session session = Session.getInstance(properties, new Authenticator() {
           @Override
           protected PasswordAuthentication getPasswordAuthentication() {
-              return new PasswordAuthentication("pvlo98715@gmail.com", "ABS0145#");
+              return new PasswordAuthentication("pvlo98715@gmail.com", "uerw dtun oxap lmxf");
           }
       });
       try {
@@ -30,6 +32,7 @@ public class SendEmail {
          message1.setText(message);
          Transport.send(message1);
           System.out.println("Email sent successfully!");
+         // new Alert(Alert.AlertType.INFORMATION,"Emails sent SuccessFully").show();
 
       } catch (MessagingException e) {
           System.out.println(e.getMessage());

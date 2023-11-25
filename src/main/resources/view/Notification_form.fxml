@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="561.0" prefWidth="498.0" styleClass="anchor-pane-with-background" stylesheets="@../style/Notification.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.NotificationFormController">
+   <children>
+      <ScrollPane layoutX="34.0" layoutY="81.0" prefHeight="433.0" prefWidth="434.0" stylesheets="@../style/Notification.css" />
+      <ImageView fitHeight="67.0" fitWidth="79.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-notification-48%20(1).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="81.0" layoutY="23.0" prefHeight="35.0" prefWidth="202.0" text="Notfication" textFill="#bf995b">
+         <font>
+            <Font name="DejaVuMathTeXGyre-Regular" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

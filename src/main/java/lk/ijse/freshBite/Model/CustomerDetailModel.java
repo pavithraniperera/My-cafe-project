@@ -158,4 +158,16 @@ public class CustomerDetailModel {
         }
         return list;
     }
+
+    public List<String> getCustomerEmails() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT email FROM customers";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<String> emailList = new ArrayList<>();
+        while (resultSet.next()){
+            emailList.add(resultSet.getString(1));
+        }
+        return emailList;
+    }
 }
