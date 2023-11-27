@@ -3,6 +3,7 @@ package lk.ijse.freshBite.Model;
 import javafx.scene.image.Image;
 import lk.ijse.freshBite.db.DbConnection;
 import lk.ijse.freshBite.dto.AddMenuDto;
+import lk.ijse.freshBite.dto.NotificationDto;
 import lk.ijse.freshBite.dto.StockItemDto;
 import lk.ijse.freshBite.dto.tm.ItemCardTm;
 
@@ -139,5 +140,44 @@ public class AddMenuModel {
         preparedStatement.setString(2,itemName);
         return preparedStatement.executeUpdate()>0;
 
+    }
+
+    public List<NotificationDto> getOutOfStockData() throws SQLException {
+        Connection  connection = DbConnection.getInstance().getConnection();
+        String sql ="SELECT\n" +
+                "  menu_item.name AS item_name,\n" +
+                "  supplier.name AS supplier_name,\n" +
+                "  supplier.phone_number\n" +
+                "FROM menu_item\n" +
+                "JOIN item_supply_details\n" +
+                "ON menu_item.stock_id = item_supply_details.stock_id\n" +
+                "JOIN supplier\n" +
+                "ON item_supply_details.supplier_id = supplier.sup_id\n" +
+                "WHERE menu_item.qty_on_hand = 0;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<NotificationDto> dtoList = new ArrayList<>();
+        while (resultSet.next()){
+            dtoList.add(new NotificationDto(resultSet.getString(1),resultSet.getString(3),resultSet.getString(2)));
+        }
+        return  dtoList;
+    }
+
+    public boolean updateStatus(String itemId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql ="UPDATE menu_item SET availability =? WHERE item_id=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,"Unavailable");
+        preparedStatement.setString(2,itemId);
+        return preparedStatement.executeUpdate()>0;
+    }
+
+    public boolean updateStatusAvailable(String itemId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql ="UPDATE menu_item SET availability =? WHERE item_id=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,"Available");
+        preparedStatement.setString(2,itemId);
+        return preparedStatement.executeUpdate()>0;
     }
 }

@@ -22,7 +22,7 @@
             <Font name="Potti Sreeramulu" size="32.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUserName" layoutX="722.0" layoutY="448.0" prefHeight="54.0" prefWidth="439.0" promptText="UserName or E mail" style="-fx-border-radius: 100; -fx-background-radius: 50;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
+      <TextField fx:id="txtUserName" layoutX="722.0" layoutY="448.0" onKeyPressed="#txtUserNameKeyPressed" prefHeight="54.0" prefWidth="439.0" promptText="UserName or E mail" style="-fx-border-radius: 100; -fx-background-radius: 50;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -32,7 +32,7 @@
             <Font name="Potti Sreeramulu" size="32.0" />
          </font>
       </Label>
-      <PasswordField fx:id="txtPwd" layoutX="725.0" layoutY="585.0" prefHeight="54.0" prefWidth="439.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 100;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
+      <PasswordField fx:id="txtPwd" layoutX="725.0" layoutY="585.0" onKeyPressed="#txtPwKeyPressed" prefHeight="54.0" prefWidth="439.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 100;" styleClass="text-field-with-gradient" stylesheets="@../style/Login.css">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

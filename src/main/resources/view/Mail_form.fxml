@@ -25,10 +25,12 @@
             <Image url="@../image/icons8-send-50.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="lblText" layoutX="262.0" layoutY="304.0" prefHeight="468.0" prefWidth="1289.0" promptText="Text Here" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="text-field-with-color" stylesheets="@../style/Mail.css">
+      <TextArea fx:id="txtAreaText" layoutX="262.0" layoutY="304.0" onKeyTyped="#txtAreaOnKeyTyped" prefHeight="468.0" prefWidth="1289.0" promptText="Text Here" style="-fx-background-radius: 20; -fx-border-radius: 20;" styleClass="text-field-with-color" stylesheets="@../style/Mail.css">
          <font>
             <Font name="DejaVu Sans" size="22.0" />
          </font>
       </TextArea>
+      <JFXButton fx:id="btnTextDelete" buttonType="RAISED" layoutX="1468.0" layoutY="714.0" onAction="#btnTextDeleteOnAction" prefHeight="39.0" prefWidth="62.0" />
+      <JFXButton fx:id="btnAttachFile" buttonType="RAISED" layoutX="1390.0" layoutY="714.0" onAction="#btnAttachFileOnAction" prefHeight="39.0" prefWidth="62.0" />
    </children>
 </AnchorPane>

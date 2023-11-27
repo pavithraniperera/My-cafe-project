@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -52,31 +54,7 @@ public class LoginFormController {
 
     @FXML
     void btnLoginOnAction(ActionEvent event) {
-        String userName = txtUserName.getText();
-        String pwd = txtPwd.getText();
-        String pwd1 = txtPassword.getText();
-        System.out.println(userName);
-        System.out.println(pwd);
-        try {
-           var dto =  model.CheckUserNamePassword ();
-            System.out.println(dto);
-           if(dto.getUserName().equals(userName) && dto.getPwd().equals(pwd) || dto.getPwd().equals(pwd1)){
-               AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
-               Scene scene = new Scene(anchorPane);
-               Stage stage = (Stage) root.getScene().getWindow();
-               stage.setScene(scene);
-               stage.centerOnScreen();
-           }
-           else {
-               lblAlert.setVisible(true);
-           }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+       login();
 
     }
 
@@ -95,5 +73,45 @@ public class LoginFormController {
 
     }
 
+    public void txtUserNameKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            // Enter key pressed in the username field, move focus to the password field
+            txtPwd.requestFocus();
+        }
+    }
+
+    public void txtPwKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            // Enter key pressed in the username field, move focus to the password field
+            login();
+        }
+
+    }
+    public void login (){
+        String userName = txtUserName.getText();
+        String pwd = txtPwd.getText();
+        String pwd1 = txtPassword.getText();
+        System.out.println(userName);
+        System.out.println(pwd);
+        try {
+            var dto =  model.CheckUserNamePassword ();
+            System.out.println(dto);
+            if(dto.getUserName().equals(userName) && dto.getPwd().equals(pwd) || dto.getPwd().equals(pwd1)){
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
+                Scene scene = new Scene(anchorPane);
+                Stage stage = (Stage) root.getScene().getWindow();
+                stage.setScene(scene);
+                stage.centerOnScreen();
+            }
+            else {
+                lblAlert.setVisible(true);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

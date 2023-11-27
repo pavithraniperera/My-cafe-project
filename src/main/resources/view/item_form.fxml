@@ -28,7 +28,7 @@
                   <Font name="Jamrul" size="17.0" />
                </font>
             </JFXButton>
-            <Spinner fx:id="spinnerQuantity" layoutX="194.0" layoutY="192.0" prefHeight="33.0" prefWidth="64.0" stylesheets="@../style/itemCard.css" />
+            <Spinner fx:id="spinnerQuantity" layoutX="199.0" layoutY="187.0" prefHeight="43.0" prefWidth="64.0" stylesheets="@../style/itemCard.css" />
             <Label fx:id="lblPrice" layoutX="128.0" layoutY="128.0" prefHeight="33.0" prefWidth="103.0" text="400.00" textFill="#d32222">
                <font>
                   <Font name="Gayathri Bold" size="19.0" />

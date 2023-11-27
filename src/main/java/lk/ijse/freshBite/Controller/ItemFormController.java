@@ -49,6 +49,7 @@ public class ItemFormController {
     private ItemCardModel model = new ItemCardModel();
     private MenuItemFormController menuItemFormController ;
     private List<ItemCardDto> cartItems = new ArrayList<>();
+
     public void initialize(){
         setQuantity();
 
@@ -92,6 +93,7 @@ public class ItemFormController {
                 System.out.println(cartItems);
                 // Update the TableView in MenuItemFormController
                 menuItemFormController.setTableValue(dto, qty);
+                spinnerQuantity.getValueFactory().setValue(0);
             }
             } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -103,6 +105,7 @@ public class ItemFormController {
 
     }
     void checkAvailabillity(){
+
         try {
             String checkAvailability = model.getStatus(lblName.getText());
             System.out.println(lblName.getText());

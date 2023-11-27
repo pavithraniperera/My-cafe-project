@@ -12,11 +12,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.freshBite.Model.StockItemModel;
+import lk.ijse.freshBite.db.DbConnection;
 import lk.ijse.freshBite.dto.StockItemDto;
 import lk.ijse.freshBite.dto.tm.StockItemTm;
 import lk.ijse.freshBite.regex.RegexPattern;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +33,7 @@ public class StockItemFormController {
     public AnchorPane pane2;
     public JFXButton btnSeeSupplier;
     public TableColumn dateCol;
+    public JFXButton btnreport;
     @FXML
     private JFXButton btnAddItem;
 
@@ -272,4 +279,25 @@ public class StockItemFormController {
         return  true;
     }
 
+    public void btnReportOnAction(ActionEvent actionEvent) {
+        InputStream resourceAsStream =
+                getClass().getResourceAsStream("/reports/Inventory_report.jrxml");
+        try {
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport compileReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                            compileReport, //compiled report
+                            null,
+                            DbConnection.getInstance().getConnection() //database connection
+                    );
+            JasperViewer.viewReport(jasperPrint, false);
+
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

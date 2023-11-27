@@ -225,6 +225,7 @@ public class ReservationFormController {
                 boolean isSaved =model.saveReservation(dto);
                 if (isSaved){
                     new Alert(Alert.AlertType.INFORMATION,"Reservation saved").show();
+                    loadAllReservations();
                     tableReservation.refresh();
                 }
             } catch (SQLException e) {
@@ -258,6 +259,7 @@ public class ReservationFormController {
                 boolean isUpdated =model.updateReservation(dto);
                 if (isUpdated){
                     new Alert(Alert.AlertType.INFORMATION,"Reservation Update").show();
+                    loadAllReservations();
                     tableReservation.refresh();
                 }
             } catch (SQLException e) {
@@ -423,6 +425,7 @@ public class ReservationFormController {
                         boolean deleted = model.deleteReservation(reservationId);
                         if (deleted) {
                             new Alert(Alert.AlertType.INFORMATION, "Reservation Deleted").show();
+                            loadAllReservations();
                         }
                     } catch (SQLException ex) {
                         new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();

@@ -13,3 +13,8 @@
     -fx-background-position: center center;
 
 }
+.anchor-pane-background-color{
+    -fx-background-color: rgba(248, 226, 169, 0.54);
+    -fx-border-color: rgba(255, 196, 118, 0.9);
+    -fx-border-width: 3px;
+}

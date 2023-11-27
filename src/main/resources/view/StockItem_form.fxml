@@ -114,5 +114,17 @@
             <Font name="FreeSerif" size="22.0" />
          </font>
       </JFXButton>
+      <JFXButton fx:id="btnreport" layoutX="1113.0" layoutY="817.0" onAction="#btnReportOnAction" prefHeight="78.0" prefWidth="268.0" style="-fx-background-radius: 40; -fx-border-radius: 40;" styleClass="button-with-gradient" stylesheets="@../style/StockItem.css" text="Inventory Report">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-in-inventory-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="FreeSerif" size="22.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

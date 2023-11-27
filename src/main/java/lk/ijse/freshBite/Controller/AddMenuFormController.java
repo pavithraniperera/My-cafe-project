@@ -16,10 +16,13 @@ import lk.ijse.freshBite.dto.AddMenuDto;
 import lk.ijse.freshBite.dto.StockItemDto;
 import lk.ijse.freshBite.dto.tm.MenuTm;
 import lk.ijse.freshBite.regex.RegexPattern;
+import javafx.scene.control.TableCell;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -94,6 +97,7 @@ public class AddMenuFormController {
     @FXML
     private TableColumn<?, ?> typeCol;
     private AddMenuModel model = new AddMenuModel();
+  private   ObservableList<MenuTm> oblist = FXCollections.observableArrayList();
     public void initialize() throws SQLException {
         ObservableList<String> statusList = FXCollections.observableArrayList("Available","Unavailable");
         cmbStatus.setItems(statusList);
@@ -106,6 +110,7 @@ public class AddMenuFormController {
         setCellValueFactory();
         loadAllMenues();
         tableListener();
+        updateStatusIfQuantityZero();
 
     }
 
@@ -139,13 +144,14 @@ public class AddMenuFormController {
     }
 
     private void loadAllMenues() {
-        ObservableList<MenuTm> oblist = FXCollections.observableArrayList();
+
         try {
             List<AddMenuDto> dtoList = model.loadMenuItems();
             for (AddMenuDto dto : dtoList){
                 oblist.add(new MenuTm(dto.getItemId(), dto.getName(), dto.getType(), dto.getQtyOnhand(), dto.getSellPrice(), dto.getStatus(), dto.getStockId()));
             }
             tableMenueItem.setItems(oblist);
+            tableMenueItem.refresh();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -159,6 +165,7 @@ public class AddMenuFormController {
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         stockIdCol.setCellValueFactory(new PropertyValueFactory<>("stock_id"));
+
 
     }
 
@@ -179,6 +186,7 @@ public class AddMenuFormController {
                 boolean isAdd = model.addMenu(dto);
                 if (isAdd) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Menu Item Add Successful!!").show();
+                    loadAllMenues();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -216,6 +224,7 @@ public class AddMenuFormController {
                 boolean isDeleted = model.deleteItem(menu_id);
                 if (isDeleted){
                     new Alert(Alert.AlertType.CONFIRMATION,"Item Deleted Successfully!!");
+                    loadAllMenues();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage());
@@ -265,6 +274,7 @@ public class AddMenuFormController {
                 boolean isUpdate = model.updateMenu(dto);
                 if (isUpdate) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Menu Updated!!").show();
+                    loadAllMenues();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -289,7 +299,7 @@ public class AddMenuFormController {
         String stockId = String.valueOf(cmbId.getValue());
         try {
             StockItemDto itemDto = model.getItemDetail(stockId);
-            txtStock.setText(String.valueOf(itemDto.getQuantity()));
+           // txtStock.setText(String.valueOf(itemDto.getQuantity()));
             txtName.setText(itemDto.getName());
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -305,14 +315,49 @@ public class AddMenuFormController {
             new Alert(Alert.AlertType.ERROR,"Invalid name").show();
             return  false;
         }
-        if (!(Pattern.matches(String.valueOf(RegexPattern.getDoublePattern()),txtPrice.getText()))){
-            new Alert(Alert.AlertType.ERROR,"Invalid  ").show();
+        if (!(Pattern.matches("[0-9]{1,13}(\\.[0-9]*)?",txtPrice.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid price ").show();
             return  false;
         }
-        if (!(Pattern.matches(String.valueOf(RegexPattern.getIntPattern()),txtStock.getText()))){
-            new Alert(Alert.AlertType.ERROR,"Invalid ").show();
+       /* if (!(Pattern.matches("\"[1-9]\\\\d*\"",txtStock.getText()))){
+            new Alert(Alert.AlertType.ERROR,"Invalid Quantity ").show();
             return false;
-        }
+        }*/
         return true;
     }
+    private void updateStatusIfQuantityZero() {
+        try {
+            List<MenuTm> itemsToUpdate = new ArrayList<>();
+
+            for (MenuTm item : oblist) {
+                if (item.getQty() == 0) {
+                    boolean isUpdate = model.updateStatus(item.getItem_id());
+                    if (isUpdate) {
+                        itemsToUpdate.add(item);
+                    }
+                } else if (item.getQty() > 0 && item.getStatus().equals("Unavailable")) {
+                    boolean isUpdate = model.updateStatusAvailable(item.getItem_id());
+                    if (isUpdate) {
+                        itemsToUpdate.add(item);
+                    }
+                }
+            }
+
+            // Update the statuses in the current table data
+            for (MenuTm item : itemsToUpdate) {
+                if (item.getQty() == 0) {
+                    item.setStatus("Unavailable");
+                } else if (item.getQty() > 0 && item.getStatus().equals("Unavailable")) {
+                    item.setStatus("Available");
+                }
+            }
+
+            // Optionally, you can call loadAllMenues() here if needed.
+            // loadAllMenues();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

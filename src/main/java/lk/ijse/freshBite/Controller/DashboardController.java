@@ -1,8 +1,7 @@
 package lk.ijse.freshBite.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -54,6 +54,7 @@ public class DashboardController  implements Initializable {
     public TableColumn colTablNo;
     public JFXButton btnCalculater;
     public JFXButton btnNotification;
+    public JFXButton btnSend;
     @FXML
     private LineChart<?, ?> chartRevenue;
     @FXML
@@ -130,7 +131,16 @@ public class DashboardController  implements Initializable {
         loadIncome();
         setImageToBtn();
         SetNotificationBtn();
+        setSendButton();
 
+    }
+
+    private void setSendButton() {
+        Image image = new Image("/image/icons8-send-mail-53.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        btnSend.setGraphic(imageView);
     }
 
     private void SetNotificationBtn() {
@@ -501,10 +511,38 @@ public class DashboardController  implements Initializable {
 
     }
 
-    public void btnNotificationOnAction(ActionEvent actionEvent) {
+    public void btnNotificationOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Notification_form.fxml"));
+        Parent root = loader.load();
 
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
 
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+        double finalY = (screenHeight - stage.getHeight()) / 2; // Centered on the screen
 
+        double initialY = -stage.getHeight(); // Initial Y position above the screen
+
+        // Set the initial Y position
+        stage.setY(initialY);
+        Timeline timeline = new Timeline();
+        // Create a timeline for the animation
+        timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0.5)// Animate to the final Y position
+                )
+        );
+
+        timeline.play();
+
+        // Show the stage after the animation starts
+        stage.show();;
+    }
+
+    public void btnSendOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/Mail_form.fxml"));
+        pane2.getChildren().removeAll();
+
+        pane2.getChildren().setAll(fxml);
     }
 }
 

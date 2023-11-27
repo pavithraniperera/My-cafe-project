@@ -5,12 +5,22 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="561.0" prefWidth="498.0" styleClass="anchor-pane-with-background" stylesheets="@../style/Notification.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.NotificationFormController">
+<AnchorPane prefHeight="561.0" prefWidth="498.0" style="-fx-background-radius: 30;" styleClass="anchor-pane-with-background" stylesheets="@../style/Notification.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.freshBite.Controller.NotificationFormController">
    <children>
-      <ScrollPane layoutX="34.0" layoutY="81.0" prefHeight="433.0" prefWidth="434.0" stylesheets="@../style/Notification.css" />
+      <ScrollPane layoutX="34.0" layoutY="81.0" prefHeight="433.0" prefWidth="434.0" stylesheets="@../style/Notification.css">
+         <content>
+            <GridPane fx:id="gridCard" prefHeight="22.0" prefWidth="100.0" vgap="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
       <ImageView fitHeight="67.0" fitWidth="79.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/icons8-notification-48%20(1).png" />
@@ -19,6 +29,16 @@
       <Label layoutX="81.0" layoutY="23.0" prefHeight="35.0" prefWidth="202.0" text="Notfication" textFill="#bf995b">
          <font>
             <Font name="DejaVuMathTeXGyre-Regular" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgExit" fitHeight="48.0" fitWidth="46.0" layoutX="425.0" layoutY="12.0" onMouseClicked="#imgExitOnMouseClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Exit%20icon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblNoNotification" layoutX="81.0" layoutY="512.0" prefHeight="35.0" prefWidth="331.0" text="No new Notifications" textFill="#e14141" visible="false">
+         <font>
+            <Font name="DejaVu Serif Bold" size="20.0" />
          </font>
       </Label>
    </children>
