@@ -13,7 +13,7 @@ import java.util.List;
 public class StaffDetailModel {
     public boolean addEmployee(StaffDetailDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "INSERT INTO Employee VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Employee VALUES (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, dto.getEmpId());
         preparedStatement.setString(2, dto.getName());
@@ -24,6 +24,7 @@ public class StaffDetailModel {
         preparedStatement.setString(7, dto.getJobRole());
         preparedStatement.setString(8, String.valueOf(dto.getChargePerHour()));
         preparedStatement.setString(9, dto.getQualification());
+        preparedStatement.setString(10, dto.getBarCode());
        return preparedStatement.executeUpdate()>0;
     }
 
@@ -99,5 +100,17 @@ public class StaffDetailModel {
         else {
             return "E001";
         }
+    }
+
+    public String getBarcodePath(String text) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT barcode_data FROM Employee WHERE Emp_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,text);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }

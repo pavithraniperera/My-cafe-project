@@ -78,4 +78,7 @@ public class NotificationFormController {
         return dtos;
 
     }
+    public int getNotificationCount(){
+        return gridCard.getChildren().size();
+    }
 }

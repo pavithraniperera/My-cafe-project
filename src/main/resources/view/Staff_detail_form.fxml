@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -72,6 +73,13 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="23.0" />
                </font>
             </TextField>
+            <Label layoutX="711.0" layoutY="520.0" prefHeight="114.0" prefWidth="334.0" />
+            <ImageView fx:id="imgBarcode" fitHeight="120.0" fitWidth="336.0" layoutX="709.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="834.0" layoutY="635.0" prefHeight="18.0" prefWidth="160.0" text="Barcode">
+               <font>
+                  <Font name="DejaVuMathTeXGyre-Regular" size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <JFXButton fx:id="btnSave" layoutX="112.0" layoutY="815.0" onAction="#btnSaveOnAction" prefHeight="58.0" prefWidth="209.0" style="-fx-background-radius: 50; -fx-border-radius: 50;" styleClass="button-with-gradient" stylesheets="@../style/StaffForm.css" text="Save" AnchorPane.bottomAnchor="179.0">

@@ -10,8 +10,19 @@ public class StaffDetailDto {
     private String jobRole;
     private double chargePerHour;
     private String qualification;
+    private String barCode;
 
-    public StaffDetailDto() {
+    public StaffDetailDto(String emp_id, String name, String address, String nic, String telephone, String email, String jobRll, double chargePerHour, String qualification) {
+
+        EmpId = emp_id;
+        this.name = name;
+        this.address = address;
+        this. Nic = nic;
+        this.telephone = telephone;
+        this.email = email;
+        this.jobRole = jobRll;
+        this.chargePerHour = chargePerHour;
+        this.qualification = qualification;
     }
 
 
@@ -23,16 +34,17 @@ public class StaffDetailDto {
         this.email = email;
     }
 
-    public StaffDetailDto(String empId, String name, String address, String nic, String telephone, String email, String jobRole, double chargePerHour, String qualification) {
+    public StaffDetailDto(String empId, String name, String address, String nic, String telephone, String email, String jobRole, double chargePerHour, String qualification,String barCode) {
         EmpId = empId;
         this.name = name;
         this.address = address;
-        Nic = nic;
+       this. Nic = nic;
         this.telephone = telephone;
         this.email = email;
         this.jobRole = jobRole;
         this.chargePerHour = chargePerHour;
         this.qualification = qualification;
+        this.barCode = barCode;
     }
 
     public String getEmpId() {
@@ -114,4 +126,11 @@ public class StaffDetailDto {
     }
 
 
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
 }

@@ -50,7 +50,7 @@ public class MailFormController {
            // System.out.println(emailList);
             String subject = lblSubject.getText();
             String text = txtAreaText.getText();
-            SendEmail.outMail(text,emailList,subject);
+            SendEmail.outMail(text,emailList,subject,attachedFiles);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

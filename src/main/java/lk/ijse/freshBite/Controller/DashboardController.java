@@ -55,6 +55,7 @@ public class DashboardController  implements Initializable {
     public JFXButton btnCalculater;
     public JFXButton btnNotification;
     public JFXButton btnSend;
+    public Label lblCount;
     @FXML
     private LineChart<?, ?> chartRevenue;
     @FXML
@@ -144,6 +145,7 @@ public class DashboardController  implements Initializable {
     }
 
     private void SetNotificationBtn() {
+
         Image image = new Image("/image/icons8-notification-48 (1).png");
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(50);
@@ -518,6 +520,9 @@ public class DashboardController  implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
 
+        NotificationFormController notificationController = loader.getController();
+        int count = notificationController.getNotificationCount();
+        setLabel(count);
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
         double finalY = (screenHeight - stage.getHeight()) / 2; // Centered on the screen
 
@@ -536,6 +541,14 @@ public class DashboardController  implements Initializable {
 
         // Show the stage after the animation starts
         stage.show();;
+    }
+
+    private void setLabel(int count) {
+        if (count>0){
+            lblCount.setText(String.valueOf(count));
+        }else {
+            lblCount.setVisible(false);
+        }
     }
 
     public void btnSendOnAction(ActionEvent actionEvent) throws IOException {
